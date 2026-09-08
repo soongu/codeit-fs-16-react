@@ -2,6 +2,7 @@
 import FeedItemHeader from './FeedItemHeader.jsx';
 import FeedItemActions from './FeedItemActions.jsx';
 import FeedItemContent from './FeedItemContent.jsx';
+import CommentArea from './CommentArea.jsx';
 
 const FeedItem = ({
   username,
@@ -36,6 +37,9 @@ const FeedItem = ({
           minutesAgo={minutesAgo}
         />
       </div>
+
+      <CommentArea />
+
     </article>
   );
 };
