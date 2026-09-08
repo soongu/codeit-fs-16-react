@@ -5,8 +5,9 @@ import viteLogo from './assets/vite.svg'
 import './App.css'
 import { HelloBox } from './HelloBox.jsx';
 
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
