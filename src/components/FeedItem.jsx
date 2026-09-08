@@ -3,25 +3,42 @@ import FeedItemHeader from './FeedItemHeader.jsx';
 import FeedItemActions from './FeedItemActions.jsx';
 import FeedItemContent from './FeedItemContent.jsx';
 
-const FeedItem = () => {
+const FeedItem = ({
+  username,
+  profileImage,
+  postImage,
+  postAlt,
+  content,
+  minutesAgo,
+  likeCount,
+  commentCount,
+}) => {
   return (
     <article className='post'>
-      <FeedItemHeader />
+      <FeedItemHeader
+        username={username}
+        profileImage={profileImage}
+      />
 
       <div className='imageContainer'>
         <img
-          src='https://picsum.photos/seed/post1/600/600'
-          alt='한강에서 찍은 노을 사진'
+          src={postImage}
+          alt={postAlt}
         />
       </div>
 
-      <FeedItemActions />
+      <FeedItemActions likeCount={likeCount} />
 
       <div className='content'>
-        <FeedItemContent />
+        <FeedItemContent
+          username={username}
+          content={content}
+          minutesAgo={minutesAgo}
+        />
       </div>
     </article>
   );
 };
+
 
 export default FeedItem;

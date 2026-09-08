@@ -1,17 +1,18 @@
 // ~/instagram-react/src/components/FeedItemContent.jsx
 import FeedItemCaption from './FeedItemCaption.jsx';
 
-const username = '하츄핑';
-
-const FeedItemContent = () => {
+const FeedItemContent = ({ username, content, minutesAgo }) => {
   return (
     <div className='text'>
       <a
-        href='/jaehoon'
+        href={`/${username}`}
         className='username'>
         {username}
       </a>
-      <FeedItemCaption />
+      <FeedItemCaption
+        content={content}
+        minutesAgo={minutesAgo}
+      />
     </div>
   );
 };

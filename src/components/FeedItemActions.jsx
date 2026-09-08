@@ -1,7 +1,6 @@
 // ~/instagram-react/src/components/FeedItemActions.jsx
-const likeCount = 1240;
 
-const FeedItemActions = () => {
+const FeedItemActions = ({ likeCount }) => {
   return (
     <div className='actions'>
       <div className='actionButtons'>

@@ -1,14 +1,9 @@
-
-const content = '오늘 한강 노을 실화?';
-const minutesAgo = 10;
-
-const FeedItemCaption = () => {
+// ~/instagram-react/src/components/FeedItemCaption.jsx
+const FeedItemCaption = ({ content, minutesAgo }) => {
   return (
     <>
       <span className='caption'>{content}</span>
-      <div className='time'>
-        {minutesAgo}분 전
-      </div>
+      <div className='time'>{minutesAgo}분 전</div>
     </>
   );
 };
