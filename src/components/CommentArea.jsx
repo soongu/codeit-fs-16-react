@@ -1,13 +1,11 @@
-import CommentForm from "./CommentForm";
-import FeedItemComments from "./FeedItemComments";
 
-const CommentArea = () => {
+const CommentArea = ({ children }) => {
   return (
     <div className='postComments'>
-      <FeedItemComments commentCount={128} />
-      <CommentForm />
+      {children}
     </div>
   );
 };
 
 export default CommentArea;
+

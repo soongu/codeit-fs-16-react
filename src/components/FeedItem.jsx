@@ -38,7 +38,9 @@ const FeedItem = ({
         />
       </div>
 
-      <CommentArea />
+      <CommentArea>
+        <div>안녕</div>
+      </CommentArea>
 
     </article>
   );
