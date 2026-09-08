@@ -1,7 +1,7 @@
 // ~/instagram-react/src/components/FeedItemContent.jsx
 import FeedItemCaption from './FeedItemCaption.jsx';
 
-const username = 'jaehoon';
+const username = '하츄핑';
 
 const FeedItemContent = () => {
   return (

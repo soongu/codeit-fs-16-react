@@ -1,8 +1,14 @@
+
+const content = '오늘 한강 노을 실화?';
+const minutesAgo = 10;
+
 const FeedItemCaption = () => {
   return (
     <>
-      <span className='caption'>오늘 한강 노을 실화?</span>
-      <div className='time'>10분 전</div>
+      <span className='caption'>{content}</span>
+      <div className='time'>
+        {minutesAgo}분 전
+      </div>
     </>
   );
 };
