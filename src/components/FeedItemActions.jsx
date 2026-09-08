@@ -17,8 +17,7 @@ const FeedItemActions = ({ likeCount }) => {
             className='actionButton'
             onClick={() => { 
               setLiked(prevLiked => !prevLiked);
-              setCount((prevCount) => prevCount + 1);
-              setCount((prevCount) => prevCount + 1);
+              setCount((prevCount) => liked ? prevCount - 1 : prevCount + 1);
             }}
           >
             {liked ? "♥" : "♡"}
