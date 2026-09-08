@@ -1,8 +1,10 @@
-import FeedItemContent from "./components/FeedItemContent.jsx";
+import FeedItem from "./components/FeedItem.jsx";
 
 function App() {
   return (
-    <FeedItemContent />
+    <>
+      <FeedItem />
+    </>
   );
 }
 
