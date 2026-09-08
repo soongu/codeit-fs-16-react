@@ -31,7 +31,7 @@ const FeedItemActions = ({ likeCount }) => {
         <div className={styles.leftButtons}>
           <button
             type='button'
-            className={styles.actionButton}
+            className={`${styles.actionButton} ${like.liked ? styles.liked : ''}`}
             onClick={handleLike}>
             {like.liked ? <FaHeart /> : <FaRegHeart />}
           </button>
