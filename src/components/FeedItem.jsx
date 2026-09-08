@@ -6,8 +6,8 @@ import FeedItemComments from './FeedItemComments.jsx';
 import CommentForm from './CommentForm.jsx';
 import CommentArea from './CommentArea.jsx';
 
-import './FeedItem.scss';
-import './Carousel.scss';
+import styles from './FeedItem.module.scss';
+import carousel from './Carousel.module.scss';
 
 const FeedItem = ({
   username,
@@ -20,14 +20,14 @@ const FeedItem = ({
   commentCount,
 }) => {
   return (
-    <article className='post'>
+    <article className={styles.post}>
       <FeedItemHeader
         username={username}
         profileImage={profileImage}
       />
 
-      <div className='imageContainer'>
-        <div className='carouselSlide'>
+      <div className={styles.imageContainer}>
+        <div className={carousel.carouselSlide}>
           <img
             src={postImage}
             alt={postAlt}
@@ -37,7 +37,7 @@ const FeedItem = ({
 
       <FeedItemActions likeCount={likeCount} />
 
-      <div className='content'>
+      <div className={styles.content}>
         <FeedItemContent
           username={username}
           content={content}

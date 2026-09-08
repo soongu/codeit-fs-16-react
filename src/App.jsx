@@ -1,9 +1,10 @@
 import FeedItem from "./components/FeedItem.jsx";
-import './components/FeedList.scss';
+import styles from './components/FeedList.module.scss';
 
 function App() {
+
   return (
-    <div className="feedList">
+    <div className={styles.feedList}>
       <FeedItem
         username='jaehoon'
         profileImage='https://picsum.photos/seed/jaehoon/40/40'

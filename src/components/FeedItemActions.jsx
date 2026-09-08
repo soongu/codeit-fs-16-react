@@ -1,5 +1,6 @@
 // ~/instagram-react/src/components/FeedItemActions.jsx
 import { useState } from "react";
+import styles from './FeedItem.module.scss';
 
 
 const FeedItemActions = ({ likeCount }) => {
@@ -18,34 +19,34 @@ const FeedItemActions = ({ likeCount }) => {
   };
 
   return (
-    <div className='actions'>
-      <div className='actionButtons'>
-        <div className='leftButtons'>
+    <div className={styles.actions}>
+      <div className={styles.actionButtons}>
+        <div className={styles.leftButtons}>
           <button
             type='button'
-            className='actionButton'
+            className={styles.actionButton}
             onClick={handleLike}
           >
             {like.liked ? "♥" : "♡"}
           </button>
           <button
             type='button'
-            className='actionButton'>
+            className={styles.actionButton}>
             💬
           </button>
           <button
             type='button'
-            className='actionButton'>
+            className={styles.actionButton}>
             ↗
           </button>
         </div>
         <button
           type='button'
-          className='actionButton'>
+          className={styles.actionButton}>
           🔖
         </button>
       </div>
-      <div className='likes'>
+      <div className={styles.likes}>
         좋아요 <span>{like.count.toLocaleString()}</span>개
       </div>
     </div>

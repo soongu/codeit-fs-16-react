@@ -1,12 +1,6 @@
-
+import styles from './FeedItem.module.scss';
 const CommentArea = ({ children }) => {
-  
-  return (
-    <div className='postComments'>
-      {children}
-    </div>
-  );
+  return <div className={styles.postComments}>{children}</div>;
 };
 
 export default CommentArea;
-
