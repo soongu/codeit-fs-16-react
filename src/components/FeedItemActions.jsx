@@ -1,6 +1,13 @@
 // ~/instagram-react/src/components/FeedItemActions.jsx
 import { useState } from "react";
 import styles from './FeedItem.module.scss';
+import {
+  FaHeart,
+  FaRegBookmark,
+  FaRegComment,
+  FaRegHeart,
+  FaRegPaperPlane,
+} from 'react-icons/fa6';
 
 
 const FeedItemActions = ({ likeCount }) => {
@@ -25,25 +32,24 @@ const FeedItemActions = ({ likeCount }) => {
           <button
             type='button'
             className={styles.actionButton}
-            onClick={handleLike}
-          >
-            {like.liked ? "♥" : "♡"}
+            onClick={handleLike}>
+            {like.liked ? <FaHeart /> : <FaRegHeart />}
           </button>
           <button
             type='button'
             className={styles.actionButton}>
-            💬
+            <FaRegComment />
           </button>
           <button
             type='button'
             className={styles.actionButton}>
-            ↗
+            <FaRegPaperPlane />
           </button>
         </div>
         <button
           type='button'
           className={styles.actionButton}>
-          🔖
+          <FaRegBookmark />
         </button>
       </div>
       <div className={styles.likes}>
