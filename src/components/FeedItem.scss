@@ -1,0 +1,204 @@
+// src/components/feed/FeedItem.module.scss
+.post {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 24px;
+
+  @media (max-width: 640px) {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profileLink {
+  text-decoration: none;
+}
+
+.profileImage {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.userDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  color: #262626;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+
+}
+
+.optionsButton {
+  border: none;
+  background: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #262626;
+}
+
+.imageContainer {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: #000;
+}
+
+.actions {
+  padding: 6px 16px;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.leftButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.actionButton {
+  border: none;
+  background: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #262626;
+
+  svg {
+    font-size: 24px;
+  }
+}
+
+.likes {
+  font-weight: 600;
+  font-size: 14px;
+  color: #262626;
+  margin: 4px 0;
+}
+
+.content {
+  padding: 0 16px;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.caption {
+  color: #262626;
+  margin-left: 4px;
+
+  :global(.hashtag-link) {
+    color: #0095f6;
+    text-decoration: none;
+
+    &:hover {
+      color: rgb(0, 176, 246);
+    }
+  }
+}
+
+.moreButton {
+  border: none;
+  background: none;
+  color: #8e8e8e;
+  font-size: 14px;
+  padding: 0;
+  margin-left: 4px;
+  cursor: pointer;
+
+  &:hover {
+    color: #262626;
+  }
+}
+.liked {
+  color: #F00;
+}
+.time {
+  color: #8e8e8e;
+  font-size: 12px;
+  margin: 8px 0;
+}
+
+/* ✅ "댓글 N개 보기" 버튼 */
+.postComments {
+  padding: 0 16px;
+}
+
+.commentSection {
+  margin-top: 8px;
+}
+
+.viewCommentsButton {
+  background: none;
+  border: none;
+  color: #8e8e8e;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  display: inline-block;
+
+  &:hover {
+    color: #262626;
+  }
+}
+
+/* ✅ 댓글 입력 폼 */
+.commentForm {
+  display: flex;
+  align-items: center;
+  padding: 8px 0px;
+  background: #fff;
+
+  .commentInput {
+    flex: 1;
+    border: none;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+    background: transparent;
+  }
+
+  .commentSubmit {
+    border: none;
+    background: none;
+    color: #0095f6;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 8px;
+
+    &:disabled {
+      color: #b2dffc;
+      cursor: not-allowed;
+    }
+  }
+}

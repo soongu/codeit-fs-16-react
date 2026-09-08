@@ -1,8 +1,9 @@
 import FeedItem from "./components/FeedItem.jsx";
+import './components/FeedList.scss';
 
 function App() {
   return (
-    <>
+    <div className="feedList">
       <FeedItem
         username='jaehoon'
         profileImage='https://picsum.photos/seed/jaehoon/40/40'
@@ -24,7 +25,7 @@ function App() {
         likeCount={87}
         commentCount={12}
       />
-    </>
+    </div>
   );
 }
 

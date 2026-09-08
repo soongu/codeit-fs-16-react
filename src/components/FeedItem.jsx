@@ -6,6 +6,9 @@ import FeedItemComments from './FeedItemComments.jsx';
 import CommentForm from './CommentForm.jsx';
 import CommentArea from './CommentArea.jsx';
 
+import './FeedItem.scss';
+import './Carousel.scss';
+
 const FeedItem = ({
   username,
   profileImage,
@@ -24,10 +27,12 @@ const FeedItem = ({
       />
 
       <div className='imageContainer'>
-        <img
-          src={postImage}
-          alt={postAlt}
-        />
+        <div className='carouselSlide'>
+          <img
+            src={postImage}
+            alt={postAlt}
+          />
+        </div>
       </div>
 
       <FeedItemActions likeCount={likeCount} />
