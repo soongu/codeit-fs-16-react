@@ -2,6 +2,8 @@
 import FeedItemHeader from './FeedItemHeader.jsx';
 import FeedItemActions from './FeedItemActions.jsx';
 import FeedItemContent from './FeedItemContent.jsx';
+import FeedItemComments from './FeedItemComments.jsx';
+import CommentForm from './CommentForm.jsx';
 import CommentArea from './CommentArea.jsx';
 
 const FeedItem = ({
@@ -39,9 +41,9 @@ const FeedItem = ({
       </div>
 
       <CommentArea>
-        <div>안녕</div>
+        <FeedItemComments commentCount={commentCount} />
+        <CommentForm />
       </CommentArea>
-
     </article>
   );
 };

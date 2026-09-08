@@ -1,5 +1,6 @@
 
 const CommentArea = ({ children }) => {
+  
   return (
     <div className='postComments'>
       {children}
