@@ -4,9 +4,18 @@ import { useState } from "react";
 
 const FeedItemActions = ({ likeCount }) => {
 
-  const [liked, setLiked] = useState(false);
+  const [like, setLike] = useState({
+    liked: false,
+    count: likeCount
+  });
 
-  let [count, setCount] = useState(likeCount);
+  const handleLike = () => {
+    setLike({
+      ...like,
+      liked: !like.liked,
+      count: like.liked ? like.count - 1 : like.count + 1
+    });
+  };
 
   return (
     <div className='actions'>
@@ -15,12 +24,9 @@ const FeedItemActions = ({ likeCount }) => {
           <button
             type='button'
             className='actionButton'
-            onClick={() => { 
-              setLiked(prevLiked => !prevLiked);
-              setCount((prevCount) => liked ? prevCount - 1 : prevCount + 1);
-            }}
+            onClick={handleLike}
           >
-            {liked ? "♥" : "♡"}
+            {like.liked ? "♥" : "♡"}
           </button>
           <button
             type='button'
@@ -40,7 +46,7 @@ const FeedItemActions = ({ likeCount }) => {
         </button>
       </div>
       <div className='likes'>
-        좋아요 <span>{count.toLocaleString()}</span>개
+        좋아요 <span>{like.count.toLocaleString()}</span>개
       </div>
     </div>
   );

@@ -13,6 +13,17 @@ function App() {
         likeCount={1240}
         commentCount={128}
       />
+
+      <FeedItem
+        username='minji'
+        profileImage='https://picsum.photos/seed/minji/40/40'
+        postImage='https://picsum.photos/seed/post2/600/600'
+        postAlt='골목 카페 창가 사진'
+        content='퇴근길에 발견한 카페 ☕'
+        minutesAgo={8}
+        likeCount={87}
+        commentCount={12}
+      />
     </>
   );
 }
