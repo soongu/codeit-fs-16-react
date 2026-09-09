@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "username": "jaehoon",
+      "profileImage": "https://picsum.photos/seed/jaehoon/40/40",
+      "postImage": "https://picsum.photos/seed/post1/600/600",
+      "postAlt": "한강에서 찍은 노을 사진",
+      "content": "오늘 한강 노을 실화냐 🌇",
+      "minutesAgo": 32,
+      "likeCount": 1240,
+      "commentCount": 128
+    },
+    {
+      "id": 2,
+      "username": "minji",
+      "profileImage": "https://picsum.photos/seed/minji/40/40",
+      "postImage": "https://picsum.photos/seed/post2/600/600",
+      "postAlt": "골목 카페 창가 사진",
+      "content": "퇴근길에 발견한 카페 ☕",
+      "minutesAgo": 8,
+      "likeCount": 87,
+      "commentCount": 12
+    }
+  ],
+  "stories": [
+    { "id": 1, "username": "jaehoon", "unseen": true },
+    { "id": 2, "username": "minji", "unseen": true },
+    { "id": 3, "username": "seungwoo", "unseen": false },
+    { "id": 4, "username": "yuna", "unseen": true },
+    { "id": 5, "username": "dohyun", "unseen": false },
+    { "id": 6, "username": "ssong", "unseen": true },
+    { "id": 7, "username": "hyerin", "unseen": false },
+    { "id": 8, "username": "taeyang", "unseen": true }
+  ]
+}
