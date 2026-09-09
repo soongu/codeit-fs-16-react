@@ -20,7 +20,6 @@ const FeedItem = ({
   commentCount,
 }) => {
 
-
   return (
     <article className={styles.post}>
       <FeedItemHeader
