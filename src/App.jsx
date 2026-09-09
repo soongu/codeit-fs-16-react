@@ -1,11 +1,7 @@
 import FeedItem from "./components/FeedItem.jsx";
 import styles from './components/FeedList.module.scss';
-import LabPanel from "./lab/p2-06/practice1.jsx";
-import LiftedPanel from "./lab/p2-06/practice2.jsx";
 
 const App = () => {
-
-  console.log('App 실행');
 
   return (
 

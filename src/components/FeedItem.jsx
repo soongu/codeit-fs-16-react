@@ -20,8 +20,6 @@ const FeedItem = ({
   commentCount,
 }) => {
 
-  console.log('FeedItem 실행 —', username);
-
   return (
     <article className={styles.post}>
       <FeedItemHeader
