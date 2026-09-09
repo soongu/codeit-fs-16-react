@@ -19,6 +19,7 @@ const FeedItemActions = ({ likeCount }) => {
     count: likeCount
   });
 
+  // 좋아요 버튼에 붙은 이벤트 핸들러
   const handleLike = () => {
     setLike({
       ...like,
