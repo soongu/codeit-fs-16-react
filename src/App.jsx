@@ -31,8 +31,8 @@ const posts = [
 const App = () => {
 
   // 삭제신호를 울릴 수 있는 진동벨 함수를 내린다.
-  const deleteFeed = () => { 
-    console.log('삭제 진동벨 울림!');
+  const deleteFeed = (id) => { 
+    console.log('삭제 진동벨 울림!', id);
   };
 
   return (
@@ -40,6 +40,7 @@ const App = () => {
       {posts.map((post) => (
         <FeedItem
           key={post.id}
+          postId={post.id}
           username={post.username}
           profileImage={post.profileImage}
           postImage={post.postImage}

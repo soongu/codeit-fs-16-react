@@ -3,6 +3,7 @@ import styles from './FeedItem.module.scss';
 import { FaEllipsis } from 'react-icons/fa6';
 
 const FeedItemHeader = ({
+  postId,
   username,
   profileImage = 'https://picsum.photos/seed/default/40/40',
   onDelete
@@ -30,7 +31,7 @@ const FeedItemHeader = ({
       </div>
       <button
         className={styles.optionsButton}
-        onClick={onDelete}
+        onClick={() => onDelete(postId)}
       >
         <FaEllipsis />
       </button>
