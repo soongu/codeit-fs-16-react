@@ -8,11 +8,17 @@ const App = () => {
 
   // 데이터배열을 상태로 관리
   const [posts, setPosts] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => { 
     const loadPosts = async () => { 
+
+      const url = selectedUser
+        ? `http://localhost:3001/posts?username=${selectedUser}`
+        : 'http://localhost:3001/posts';
+
       try {
-        const res = await fetch('http://localhost:3001/posts');
+        const res = await fetch(url);
         if (!res.ok) {
           throw new Error(`서버가${res.status}로 답했어요`);
         }
@@ -24,7 +30,7 @@ const App = () => {
     };
 
     loadPosts();
-  }, []);
+  }, [selectedUser]);
 
   // 삭제신호를 울릴 수 있는 진동벨 함수를 내린다.
   const handleDelete = (id) => { 
@@ -32,10 +38,16 @@ const App = () => {
     setPosts(posts.filter((post) => post.id !== id));
   };
 
+  const handleSelectUser = (username) => {
+    // console.log('스토리쪽으로 진동벨 전달~', username);
+    // console.log('현재 선택된 유저: ', selectedUser);
+    // console.log('지금 막 선택한 유저: ', username);
+    setSelectedUser(current => current === username ? null : username)
+  };
 
   return (
     <main className={page.mainContent}>
-      <Stories />
+      <Stories onSelect={handleSelectUser} />
       <FeedList
         posts={posts}
         onDelete={handleDelete}
