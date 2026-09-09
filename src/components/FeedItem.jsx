@@ -10,7 +10,6 @@ import styles from './FeedItem.module.scss';
 import carousel from './Carousel.module.scss';
 
 const FeedItem = ({
-  postId,
   username,
   profileImage,
   postImage,
@@ -26,7 +25,6 @@ const FeedItem = ({
   return (
     <article className={styles.post}>
       <FeedItemHeader
-        postId={postId}
         username={username}
         profileImage={profileImage}
         onDelete={onDelete}

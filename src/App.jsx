@@ -1,7 +1,8 @@
+import { useState } from "react";
 import FeedItem from "./components/FeedItem.jsx";
 import styles from './components/FeedList.module.scss';
 
-const posts = [
+let initialPosts = [
   {
     id: 1,
     username: 'jaehoon',
@@ -30,9 +31,13 @@ const posts = [
 
 const App = () => {
 
+  // 데이터배열을 상태로 관리
+  const [posts, setPosts] = useState(initialPosts);
+
   // 삭제신호를 울릴 수 있는 진동벨 함수를 내린다.
-  const deleteFeed = (id) => { 
-    console.log('삭제 진동벨 울림!', id);
+  const handleDelete = (id) => { 
+    // 지운다는 것은 -> 필터링한다는 것
+    setPosts(posts.filter((post) => post.id !== id));
   };
 
   return (
@@ -40,7 +45,6 @@ const App = () => {
       {posts.map((post) => (
         <FeedItem
           key={post.id}
-          postId={post.id}
           username={post.username}
           profileImage={post.profileImage}
           postImage={post.postImage}
@@ -49,7 +53,7 @@ const App = () => {
           minutesAgo={post.minutesAgo}
           likeCount={post.likeCount}
           commentCount={post.commentCount}
-          onDelete={deleteFeed}
+          onDelete={() => handleDelete(post.id)}
         />
       ))}
     </div>
