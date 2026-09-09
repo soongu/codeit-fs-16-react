@@ -1,0 +1,99 @@
+// src/components/feed/FeedList.module.scss
+.feedList {
+  max-width: 470px;
+  margin: 30px auto;
+}
+
+.loader {
+  padding: 0;
+  width: 100%;
+  max-width: 470px;
+  margin: 0 auto;
+}
+
+.skeletonPost {
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #dbdbdb;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.skeletonHeader {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 12px;
+}
+
+.skeletonAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #efefef;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonUsername {
+  width: 120px;
+  height: 14px;
+  border-radius: 4px;
+  background: #efefef;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonImage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #efefef;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonFooter {
+  padding: 6px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.skeletonIconGroup {
+  display: flex;
+  gap: 16px;
+}
+
+.skeletonIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #efefef;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonTextLine {
+  width: 80%;
+  height: 14px;
+  border-radius: 4px;
+  background: #efefef;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonTextLineShort {
+  width: 40%;
+  height: 14px;
+  border-radius: 4px;
+  background: #efefef;
+  animation: shimmer 1.5s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .feedList {
+    margin: 0;
+  }
+}
