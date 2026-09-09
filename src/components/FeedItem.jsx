@@ -18,6 +18,7 @@ const FeedItem = ({
   minutesAgo,
   likeCount,
   commentCount,
+  onDelete
 }) => {
 
 
@@ -26,6 +27,7 @@ const FeedItem = ({
       <FeedItemHeader
         username={username}
         profileImage={profileImage}
+        onDelete={onDelete}
       />
 
       <div className={styles.imageContainer}>

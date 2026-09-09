@@ -30,6 +30,11 @@ const posts = [
 
 const App = () => {
 
+  // 삭제신호를 울릴 수 있는 진동벨 함수를 내린다.
+  const deleteFeed = () => { 
+    console.log('삭제 진동벨 울림!');
+  };
+
   return (
     <div className={styles.feedList}>
       {posts.map((post) => (
@@ -43,6 +48,7 @@ const App = () => {
           minutesAgo={post.minutesAgo}
           likeCount={post.likeCount}
           commentCount={post.commentCount}
+          onDelete={deleteFeed}
         />
       ))}
     </div>
