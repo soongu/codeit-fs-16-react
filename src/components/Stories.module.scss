@@ -1,0 +1,123 @@
+// src/components/feed/Stories.module.scss
+.storiesContainer {
+  position: relative;
+  width: 100%;
+  max-width: 570px;
+  margin-bottom: 24px;
+  margin-left: 20px;
+}
+
+.storiesList {
+  display: flex;
+  padding: 0 20px;
+  gap: 7px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  transition: transform 0.3s ease;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.storyItem {
+  flex: 0 0 auto;
+  width: calc((630px - 40px - (7 * 12px)) / 8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.storyAvatar {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.storyRing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  z-index: 1;
+}
+
+.storyAvatar img {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background-color: white;
+  object-fit: cover;
+  z-index: 2;
+}
+
+.storyUsername {
+  font-size: 12px;
+  color: #262626;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navigationButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+
+  svg {
+    font-size: 12px;
+    color: #262626;
+  }
+
+  &.prev {
+    left: 8px;
+  }
+
+  &.next {
+    right: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .storiesContainer {
+    padding: 8px 0;
+  }
+
+  .storyAvatar, .storyRing {
+    width: 66px;
+    height: 66px;
+  }
+
+  .storyAvatar img {
+    width: 62px;
+    height: 62px;
+  }
+
+  .storyUsername {
+    font-size: 11px;
+  }
+}
