@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FeedItem from "./components/FeedItem.jsx";
 import styles from './components/FeedList.module.scss';
+import PopularTagList from "./lab/p2-07/practice2.jsx";
 
 let initialPosts = [
   {
@@ -42,6 +43,9 @@ const App = () => {
 
   return (
     <div className={styles.feedList}>
+
+      <PopularTagList />
+
       {posts.map((post) => (
         <FeedItem
           key={post.id}
