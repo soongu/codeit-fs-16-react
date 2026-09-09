@@ -1,0 +1,30 @@
+// src/pages/feed/FeedPage.module.scss
+
+.mainContent {
+  flex: 1;
+  max-width: 630px;
+  margin: 0 auto 0 375px;
+  padding: 30px 0;
+}
+
+.sidebar {
+  width: 319px;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
+}
+
+@media (max-width: 1263px) {
+  .feedLayout {
+    margin-left: 244px; // 화면이 좁아지면 사이드바 바로 옆에 붙임
+    padding: 30px 20px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .feedLayout {
+    margin-left: 72px; // 모바일에서는 축소된 사이드바 너비만큼
+    padding: 0;
+  }
+}
