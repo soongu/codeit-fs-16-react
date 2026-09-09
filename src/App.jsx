@@ -10,7 +10,12 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
+
   useEffect(() => { 
+
+    const who = selectedUser ?? '전체';
+    console.log('① effect 시작 —', who);
+
     const loadPosts = async () => { 
 
       const url = selectedUser
@@ -23,6 +28,8 @@ const App = () => {
           throw new Error(`서버가${res.status}로 답했어요`);
         }
         const data = await res.json();
+
+        console.log('② 데이터 요청 —', who);
         setPosts(data);
       } catch (error) {
         console.error('게시물 주소가 잘못되었습니다.', error)
@@ -30,6 +37,11 @@ const App = () => {
     };
 
     loadPosts();
+
+    return () => {
+      console.log('③ 정리 —', who);
+    };
+
   }, [selectedUser]);
 
   // 삭제신호를 울릴 수 있는 진동벨 함수를 내린다.
