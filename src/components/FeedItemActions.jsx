@@ -12,6 +12,8 @@ import {
 
 const FeedItemActions = ({ likeCount }) => {
 
+  console.log('FeedItemActions 실행');
+
   const [like, setLike] = useState({
     liked: false,
     count: likeCount

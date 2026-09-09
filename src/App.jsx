@@ -1,7 +1,9 @@
 import FeedItem from "./components/FeedItem.jsx";
 import styles from './components/FeedList.module.scss';
 
-function App() {
+const App = () => {
+
+  console.log('App 실행');
 
   return (
     <div className={styles.feedList}>
