@@ -1,10 +1,9 @@
 import { useState } from "react";
-// import Stories from "./components/Stories.jsx";
-import Stories from "./lab/p2-07/practice3.jsx";
+import Stories from "./components/Stories.jsx";
 import page from './components/FeedPage.module.scss';
 import FeedList from "./components/FeedList.jsx";
 
-let initialPosts = [
+const initialPosts = [
   {
     id: 1,
     username: 'jaehoon',
