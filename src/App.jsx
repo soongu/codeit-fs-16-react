@@ -10,9 +10,6 @@ const App = () => {
   return (
 
     <div className={styles.feedList}>
-
-      <LiftedPanel />
-
       <FeedItem
         username='jaehoon'
         profileImage='https://picsum.photos/seed/jaehoon/40/40'
