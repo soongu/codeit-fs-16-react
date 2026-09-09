@@ -1,11 +1,11 @@
 // ~/instagram-react/src/components/StoryItem.jsx
 import styles from './Stories.module.scss';
 
-const StoryItem = ({ username, profileImage }) => {
+const StoryItem = ({ username, profileImage, unseen }) => {
   return (
     <div className={styles.storyItem}>
       <div className={styles.storyAvatar}>
-        <div className={styles.storyRing}></div>
+        {unseen && <div className={styles.storyRing}></div>}
         <img
           src={profileImage}
           alt={`${username}의 스토리`}
