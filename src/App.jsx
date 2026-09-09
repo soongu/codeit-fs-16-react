@@ -6,23 +6,17 @@ import FeedList from "./components/FeedList.jsx";
 
 const App = () => {
 
-
   // 데이터배열을 상태로 관리
   const [posts, setPosts] = useState([]);
-  console.log('① 그려짐 — posts', posts.length, '개');
-
 
   useEffect(() => { 
-    console.log('② effect가 돈다');
     const loadPosts = async () => { 
-
       try {
         const res = await fetch('http://localhost:3001/posts');
         if (!res.ok) {
           throw new Error(`서버가${res.status}로 답했어요`);
         }
         const data = await res.json();
-        console.log('③ 데이터 도착 —', data.length, '개');
         setPosts(data);
       } catch (error) {
         console.error('게시물 주소가 잘못되었습니다.', error)

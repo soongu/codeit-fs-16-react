@@ -21,16 +21,339 @@
       "minutesAgo": 8,
       "likeCount": 87,
       "commentCount": 12
+    },
+    {
+      "id": 3,
+      "username": "seungwoo",
+      "profileImage": "https://picsum.photos/seed/seungwoo/40/40",
+      "postImage": "https://picsum.photos/seed/post3/600/600",
+      "postAlt": "농구 코트에서 찍은 사진",
+      "content": "주말마다 여기 옵니다 🏀",
+      "minutesAgo": 15,
+      "likeCount": 210,
+      "commentCount": 9
+    },
+    {
+      "id": 4,
+      "username": "yuna",
+      "profileImage": "https://picsum.photos/seed/yuna/40/40",
+      "postImage": "https://picsum.photos/seed/post4/600/600",
+      "postAlt": "책상 위 노트북과 커피",
+      "content": "오늘도 마감 중 💻",
+      "minutesAgo": 41,
+      "likeCount": 64,
+      "commentCount": 3
+    },
+    {
+      "id": 5,
+      "username": "dohyun",
+      "profileImage": "https://picsum.photos/seed/dohyun/40/40",
+      "postImage": "https://picsum.photos/seed/post5/600/600",
+      "postAlt": "강아지 산책 사진",
+      "content": "산책 나온 콩이 🐕",
+      "minutesAgo": 5,
+      "likeCount": 512,
+      "commentCount": 47
+    },
+    {
+      "id": 6,
+      "username": "ssong",
+      "profileImage": "https://picsum.photos/seed/ssong/40/40",
+      "postImage": "https://picsum.photos/seed/post6/600/600",
+      "postAlt": "기타와 악보",
+      "content": "새 곡 연습 시작 🎸",
+      "minutesAgo": 72,
+      "likeCount": 38,
+      "commentCount": 2
+    },
+    {
+      "id": 7,
+      "username": "hyerin",
+      "profileImage": "https://picsum.photos/seed/hyerin/40/40",
+      "postImage": "https://picsum.photos/seed/post7/600/600",
+      "postAlt": "베이킹한 쿠키 사진",
+      "content": "처음 구워본 쿠키인데 성공 🍪",
+      "minutesAgo": 23,
+      "likeCount": 146,
+      "commentCount": 21
+    },
+    {
+      "id": 8,
+      "username": "taeyang",
+      "profileImage": "https://picsum.photos/seed/taeyang/40/40",
+      "postImage": "https://picsum.photos/seed/post8/600/600",
+      "postAlt": "야경이 보이는 옥상",
+      "content": "옥상에서 보는 밤 🌃",
+      "minutesAgo": 11,
+      "likeCount": 398,
+      "commentCount": 33
+    },
+    {
+      "id": 9,
+      "username": "jaehoon",
+      "profileImage": "https://picsum.photos/seed/jaehoon/40/40",
+      "postImage": "https://picsum.photos/seed/post9/600/600",
+      "postAlt": "자전거와 강변 도로",
+      "content": "오늘 라이딩 40km 🚲",
+      "minutesAgo": 95,
+      "likeCount": 276,
+      "commentCount": 14
+    },
+    {
+      "id": 10,
+      "username": "minji",
+      "profileImage": "https://picsum.photos/seed/minji/40/40",
+      "postImage": "https://picsum.photos/seed/post10/600/600",
+      "postAlt": "라떼 아트 클로즈업",
+      "content": "라떼 아트 배우는 중",
+      "minutesAgo": 130,
+      "likeCount": 93,
+      "commentCount": 6
+    },
+    {
+      "id": 11,
+      "username": "seungwoo",
+      "profileImage": "https://picsum.photos/seed/seungwoo/40/40",
+      "postImage": "https://picsum.photos/seed/post11/600/600",
+      "postAlt": "운동화 클로즈업",
+      "content": "새 신발 개시 👟",
+      "minutesAgo": 58,
+      "likeCount": 157,
+      "commentCount": 11
+    },
+    {
+      "id": 12,
+      "username": "yuna",
+      "profileImage": "https://picsum.photos/seed/yuna/40/40",
+      "postImage": "https://picsum.photos/seed/post12/600/600",
+      "postAlt": "도서관 서가",
+      "content": "시험 기간 도서관 살이 📚",
+      "minutesAgo": 150,
+      "likeCount": 45,
+      "commentCount": 4
+    },
+    {
+      "id": 13,
+      "username": "dohyun",
+      "profileImage": "https://picsum.photos/seed/dohyun/40/40",
+      "postImage": "https://picsum.photos/seed/post13/600/600",
+      "postAlt": "바닷가 파도 사진",
+      "content": "파도 소리 들으러 왔어요 🌊",
+      "minutesAgo": 18,
+      "likeCount": 604,
+      "commentCount": 52
+    },
+    {
+      "id": 14,
+      "username": "ssong",
+      "profileImage": "https://picsum.photos/seed/ssong/40/40",
+      "postImage": "https://picsum.photos/seed/post14/600/600",
+      "postAlt": "골목 벽화",
+      "content": "동네 산책하다 발견한 벽화",
+      "minutesAgo": 88,
+      "likeCount": 72,
+      "commentCount": 5
+    },
+    {
+      "id": 15,
+      "username": "hyerin",
+      "profileImage": "https://picsum.photos/seed/hyerin/40/40",
+      "postImage": "https://picsum.photos/seed/post15/600/600",
+      "postAlt": "화분과 창가",
+      "content": "새 식물 들였습니다 🌿",
+      "minutesAgo": 35,
+      "likeCount": 118,
+      "commentCount": 8
+    },
+    {
+      "id": 16,
+      "username": "taeyang",
+      "profileImage": "https://picsum.photos/seed/taeyang/40/40",
+      "postImage": "https://picsum.photos/seed/post16/600/600",
+      "postAlt": "비 오는 날 창밖",
+      "content": "비 오는 날은 그냥 집이 최고 🌧",
+      "minutesAgo": 62,
+      "likeCount": 241,
+      "commentCount": 19
+    },
+    {
+      "id": 17,
+      "username": "jaehoon",
+      "profileImage": "https://picsum.photos/seed/jaehoon/40/40",
+      "postImage": "https://picsum.photos/seed/post17/600/600",
+      "postAlt": "등산로 정상 표지석",
+      "content": "오늘 산 정상 찍고 왔습니다 ⛰",
+      "minutesAgo": 200,
+      "likeCount": 330,
+      "commentCount": 25
+    },
+    {
+      "id": 18,
+      "username": "minji",
+      "profileImage": "https://picsum.photos/seed/minji/40/40",
+      "postImage": "https://picsum.photos/seed/post18/600/600",
+      "postAlt": "떡볶이와 튀김",
+      "content": "퇴근하고 떡볶이 🥢",
+      "minutesAgo": 47,
+      "likeCount": 189,
+      "commentCount": 16
+    },
+    {
+      "id": 19,
+      "username": "seungwoo",
+      "profileImage": "https://picsum.photos/seed/seungwoo/40/40",
+      "postImage": "https://picsum.photos/seed/post19/600/600",
+      "postAlt": "헬스장 거울 사진",
+      "content": "3개월째 꾸준히 💪",
+      "minutesAgo": 105,
+      "likeCount": 143,
+      "commentCount": 10
+    },
+    {
+      "id": 20,
+      "username": "yuna",
+      "profileImage": "https://picsum.photos/seed/yuna/40/40",
+      "postImage": "https://picsum.photos/seed/post20/600/600",
+      "postAlt": "필름 카메라",
+      "content": "필름 카메라 다시 꺼냈어요 📷",
+      "minutesAgo": 77,
+      "likeCount": 208,
+      "commentCount": 17
+    },
+    {
+      "id": 21,
+      "username": "dohyun",
+      "profileImage": "https://picsum.photos/seed/dohyun/40/40",
+      "postImage": "https://picsum.photos/seed/post21/600/600",
+      "postAlt": "캠핑장 텐트와 모닥불",
+      "content": "불멍 하러 왔습니다 🔥",
+      "minutesAgo": 25,
+      "likeCount": 455,
+      "commentCount": 38
+    },
+    {
+      "id": 22,
+      "username": "ssong",
+      "profileImage": "https://picsum.photos/seed/ssong/40/40",
+      "postImage": "https://picsum.photos/seed/post22/600/600",
+      "postAlt": "LP판과 턴테이블",
+      "content": "주말엔 LP 듣는 재미 🎵",
+      "minutesAgo": 140,
+      "likeCount": 81,
+      "commentCount": 7
+    },
+    {
+      "id": 23,
+      "username": "hyerin",
+      "profileImage": "https://picsum.photos/seed/hyerin/40/40",
+      "postImage": "https://picsum.photos/seed/post23/600/600",
+      "postAlt": "창가 자리 브런치",
+      "content": "브런치는 늘 옳아요 🍳",
+      "minutesAgo": 52,
+      "likeCount": 167,
+      "commentCount": 13
+    },
+    {
+      "id": 24,
+      "username": "taeyang",
+      "profileImage": "https://picsum.photos/seed/taeyang/40/40",
+      "postImage": "https://picsum.photos/seed/post24/600/600",
+      "postAlt": "지하철 창밖 노을",
+      "content": "퇴근길 지하철에서 🚇",
+      "minutesAgo": 6,
+      "likeCount": 122,
+      "commentCount": 9
     }
   ],
   "stories": [
-    { "id": 1, "username": "jaehoon", "unseen": true },
-    { "id": 2, "username": "minji", "unseen": true },
-    { "id": 3, "username": "seungwoo", "unseen": false },
-    { "id": 4, "username": "yuna", "unseen": true },
-    { "id": 5, "username": "dohyun", "unseen": false },
-    { "id": 6, "username": "ssong", "unseen": true },
-    { "id": 7, "username": "hyerin", "unseen": false },
-    { "id": 8, "username": "taeyang", "unseen": true }
+    {
+      "id": 1,
+      "username": "jaehoon",
+      "unseen": true
+    },
+    {
+      "id": 2,
+      "username": "minji",
+      "unseen": true
+    },
+    {
+      "id": 3,
+      "username": "seungwoo",
+      "unseen": false
+    },
+    {
+      "id": 4,
+      "username": "yuna",
+      "unseen": true
+    },
+    {
+      "id": 5,
+      "username": "dohyun",
+      "unseen": false
+    },
+    {
+      "id": 6,
+      "username": "ssong",
+      "unseen": true
+    },
+    {
+      "id": 7,
+      "username": "hyerin",
+      "unseen": false
+    },
+    {
+      "id": 8,
+      "username": "taeyang",
+      "unseen": true
+    }
+  ],
+  "suggestions": [
+    {
+      "id": 1,
+      "username": "dohyun",
+      "reason": "minji 님이 팔로우합니다"
+    },
+    {
+      "id": 2,
+      "username": "hyerin",
+      "reason": "회원님을 위한 추천"
+    },
+    {
+      "id": 3,
+      "username": "taeyang",
+      "reason": "seungwoo 님이 팔로우합니다"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "username": "minji",
+      "text": "님이 회원님의 게시물을 좋아합니다.",
+      "unread": true
+    },
+    {
+      "id": 2,
+      "username": "seungwoo",
+      "text": "님이 회원님을 팔로우하기 시작했습니다.",
+      "unread": false
+    },
+    {
+      "id": 3,
+      "username": "yuna",
+      "text": "님이 댓글을 남겼습니다.",
+      "unread": true
+    },
+    {
+      "id": 4,
+      "username": "dohyun",
+      "text": "님이 회원님의 게시물을 좋아합니다.",
+      "unread": false
+    },
+    {
+      "id": 5,
+      "username": "hyerin",
+      "text": "님이 회원님을 언급했습니다.",
+      "unread": true
+    }
   ]
 }
