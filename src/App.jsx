@@ -1,8 +1,8 @@
 import { useState } from "react";
-import FeedItem from "./components/FeedItem.jsx";
-import styles from './components/FeedList.module.scss';
-import Stories from "./components/Stories.jsx";
+// import Stories from "./components/Stories.jsx";
+import Stories from "./lab/p2-07/practice3.jsx";
 import page from './components/FeedPage.module.scss';
+import FeedList from "./components/FeedList.jsx";
 
 let initialPosts = [
   {
@@ -45,23 +45,7 @@ const App = () => {
   return (
     <main className={page.mainContent}>
       <Stories />
-
-      <div className={styles.feedList}>
-        {posts.map((post) => (
-          <FeedItem
-            key={post.id}
-            username={post.username}
-            profileImage={post.profileImage}
-            postImage={post.postImage}
-            postAlt={post.postAlt}
-            content={post.content}
-            minutesAgo={post.minutesAgo}
-            likeCount={post.likeCount}
-            commentCount={post.commentCount}
-            onDelete={() => handleDelete(post.id)}
-          />
-        ))}
-      </div>
+      <FeedList posts={posts} onDelete={handleDelete} />
     </main>
   );
 }
