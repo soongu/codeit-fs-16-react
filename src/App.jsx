@@ -89,9 +89,32 @@ const App = () => {
     setPosts([]);
   };
 
-  const handleLoadMore = () => {
-    setPageNumber((current) => current + 1);
-  };
+  // 무한 스크롤 옵저버 처리
+  useEffect(() => { 
+
+    if (nextPage === null || isLoading) {
+      return;
+    }
+
+    const target = loaderRef.current;
+    if (target === null) {
+      return;
+    }
+
+    // 옵저버를 생성해서 감시를 맡김
+    const observer = new IntersectionObserver((entries) => { 
+      console.log(entries)
+      if (entries[0].isIntersecting) {
+        setPageNumber(current => current + 1);
+      }
+    });
+
+    // 감시대상을 지정
+    observer.observe(target);
+
+    return () => observer.disconnect();
+    
+  }, [isLoading, nextPage]);
 
   return (
     <main className={page.mainContent}>
@@ -107,13 +130,6 @@ const App = () => {
             onDelete={handleDelete}
             loaderRef={loaderRef}
           />
-          {nextPage && !isLoading && (
-            <button
-              type='button'
-              onClick={handleLoadMore}>
-              더 보기
-            </button>
-          )}
         </>
       )}
     </main>

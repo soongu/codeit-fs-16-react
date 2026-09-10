@@ -4,7 +4,7 @@ import './styles/global.scss';
 import App from './App.jsx';
 
 createRoot(document.querySelector('#root')).render(
-  <StrictMode>
+  // <StrictMode>
     <App />
-  </StrictMode>,
+  // </StrictMode>,
 );
