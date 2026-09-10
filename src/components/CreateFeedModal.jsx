@@ -1,11 +1,21 @@
 // ~/instagram-react/src/components/CreateFeedModal.jsx
-import { FaImages, FaXmark } from 'react-icons/fa6';
+import { FaArrowLeft, FaImages, FaXmark } from 'react-icons/fa6';
 import styles from './CreateFeedModal.module.scss';
 import { useState, useRef } from 'react';
 import carousel from './Carousel.module.scss';
 
+// 이미지를 문자열로 변환하는 헬퍼함수
+const readAsDataUrl = (file) =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+
 const CreateFeedModal = ({ onClose }) => {
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const fileInputRef = useRef(null);
 
@@ -15,14 +25,39 @@ const CreateFeedModal = ({ onClose }) => {
 
     if (file) {
       setPreviewUrl(URL.createObjectURL(file));
+      setSelectedFile(file);
     }
+
     fileInputRef.current.value = '';
   };
 
   // 컴퓨터에서 선택 버튼 클릭 이벤트 핸들러
-  const handlePick = () => { 
+  const handlePick = () => {
     // input.file을 대리로 클릭하게 만듬
     fileInputRef.current.click();
+  };
+
+  // 공유하기 버튼을 눌렀을 때 이벤트 핸들러
+  const handleShare = async () => {
+
+    const postImage = await readAsDataUrl(selectedFile);
+
+    await fetch('http://localhost:3001/posts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: 'soongu',
+        profileImage: 'https://picsum.photos/seed/soongu/40/40',
+        postImage,
+        postAlt: '내가 올린 사진',
+        content: '하하호호 새로운 피드!!',
+        minutesAgo: 0,
+        likeCount: 0,
+        commentCount: 0,
+      }),
+    });
   };
 
   return (
@@ -41,7 +76,23 @@ const CreateFeedModal = ({ onClose }) => {
 
       <div className={styles.modalContent}>
         <div className={styles.modalHeader}>
+          <button
+            className={styles.backButton}
+            style={{ visibility: 'hidden' }}
+            type='button'>
+            <FaArrowLeft />
+          </button>
+
           <h2 className={styles.modalTitle}>새 게시물 만들기</h2>
+
+          {previewUrl && (
+            <button
+              className={styles.nextButton}
+              onClick={handleShare}
+              type='button'>
+              공유하기
+            </button>
+          )}
         </div>
 
         <div className={styles.modalBody}>
