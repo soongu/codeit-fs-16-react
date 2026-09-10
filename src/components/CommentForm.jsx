@@ -9,7 +9,6 @@ const CommentForm = () => {
 
   const handleSubmit = event => { 
     event.preventDefault();
-
     setText('');
   };
 
@@ -21,6 +20,7 @@ const CommentForm = () => {
         type='text'
         placeholder='댓글 달기...'
         className={styles.commentInput}
+        value={text}
         onChange={(event) => {
           setText(event.target.value);
         }}
