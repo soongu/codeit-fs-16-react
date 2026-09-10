@@ -10,7 +10,7 @@ const Stories = ({ onSelect }) => {
 
   useEffect(() => {
     
-    (async () => { 
+    (async () => {
       try {
         const response = await fetch('http://localhost:3001/stories');
         if (!response.ok) {
@@ -23,7 +23,7 @@ const Stories = ({ onSelect }) => {
       }
     })();
 
-  }, [])
+  }, []);
   
 
   return (

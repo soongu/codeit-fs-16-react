@@ -7,6 +7,7 @@ const App = () => {
   // 데이터배열을 상태로 관리
   const [posts, setPosts] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -15,6 +16,8 @@ const App = () => {
       const url = selectedUser
         ? `http://localhost:3001/posts?username=${selectedUser}`
         : 'http://localhost:3001/posts';
+      
+      setIsLoading(true);
 
       try {
         const res = await fetch(url, {
@@ -25,11 +28,14 @@ const App = () => {
         }
         const data = await res.json();
         setPosts(data);
+
       } catch (error) {
         if (error.name === 'AbortError') {
           return;
         }
         console.error('게시물 주소가 잘못되었습니다.', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -58,6 +64,7 @@ const App = () => {
       <Stories onSelect={handleSelectUser} />
       <FeedList
         posts={posts}
+        isLoading={isLoading}
         onDelete={handleDelete}
       />
     </main>
