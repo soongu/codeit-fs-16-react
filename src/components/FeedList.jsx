@@ -28,35 +28,38 @@ const FeedSkeleton = () => (
 
 const FeedList = ({ posts, isLoading, onDelete }) => {
 
-  if (isLoading) {
-    return (
-      <div className={styles.loader}>
-        {[1, 1].map((_, index) => <FeedSkeleton key={index} />)}
-      </div>
-    );
-  }
 
-  if (posts.length === 0) {
+  if (!isLoading && posts.length === 0) {
     return <p className={gridStyles.noPosts}>게시물이 없습니다.</p>;
   }
 
   return (
-    <div className={styles.feedList}>
-      {posts.map((post) => (
-        <FeedItem
-          key={post.id}
-          username={post.username}
-          profileImage={post.profileImage}
-          postImage={post.postImage}
-          postAlt={post.postAlt}
-          content={post.content}
-          minutesAgo={post.minutesAgo}
-          likeCount={post.likeCount}
-          commentCount={post.commentCount}
-          onDelete={() => onDelete(post.id)}
-        />
-      ))}
-    </div>
+    <>
+      <div className={styles.feedList}>
+        {posts.map((post) => (
+          <FeedItem
+            key={post.id}
+            username={post.username}
+            profileImage={post.profileImage}
+            postImage={post.postImage}
+            postAlt={post.postAlt}
+            content={post.content}
+            minutesAgo={post.minutesAgo}
+            likeCount={post.likeCount}
+            commentCount={post.commentCount}
+            onDelete={() => onDelete(post.id)}
+          />
+        ))}
+      </div>
+      <div className={styles.loader}>
+        {isLoading && (
+          <>
+            <FeedSkeleton />
+            <FeedSkeleton />
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
