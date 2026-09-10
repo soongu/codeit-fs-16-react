@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Stories from './components/Stories.jsx';
 import page from './components/FeedPage.module.scss';
+import stateStyles from './components/StatusMessage.module.scss';
 import FeedList from './components/FeedList.jsx';
 
 const App = () => {
@@ -8,9 +9,11 @@ const App = () => {
   const [posts, setPosts] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const controller = new AbortController();
+    let cancelled = false;
 
     const loadPosts = async () => {
       const url = selectedUser
@@ -18,6 +21,7 @@ const App = () => {
         : 'http://localhost:3001/posts';
       
       setIsLoading(true);
+      setError(null);
 
       try {
         const res = await fetch(url, {
@@ -29,19 +33,24 @@ const App = () => {
         const data = await res.json();
         setPosts(data);
 
-      } catch (error) {
-        if (error.name === 'AbortError') {
+      } catch (err) {
+        if (err.name === 'AbortError') {
           return;
         }
-        console.error('게시물 주소가 잘못되었습니다.', error);
+        console.error('게시물 주소가 잘못되었습니다.', err);
+        setError('게시물을 불러오지 못했습니다.');
+
       } finally {
-        setIsLoading(false);
+        if (!cancelled) {
+          setIsLoading(false);
+        }
       }
     };
 
     loadPosts();
 
     return () => {
+      cancelled = true;
       controller.abort();
     };
   }, [selectedUser]);
@@ -62,11 +71,16 @@ const App = () => {
   return (
     <main className={page.mainContent}>
       <Stories onSelect={handleSelectUser} />
-      <FeedList
-        posts={posts}
-        isLoading={isLoading}
-        onDelete={handleDelete}
-      />
+
+      {error ? (
+        <p className={stateStyles.errorText}>{error}</p>
+      ) : (
+        <FeedList
+          posts={posts}
+          isLoading={isLoading}
+          onDelete={handleDelete}
+        />
+      )}
     </main>
   );
 };
