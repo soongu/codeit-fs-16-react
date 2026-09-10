@@ -74,6 +74,30 @@ const App = () => {
     };
   }, [selectedUser, pageNumber]);
 
+  // 무한 스크롤 옵저버 처리
+  useEffect(() => {
+    if (nextPage === null || isLoading) {
+      return;
+    }
+
+    const target = loaderRef.current;
+    if (target === null) {
+      return;
+    }
+
+    // 옵저버를 생성해서 감시를 맡김
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setPageNumber((current) => current + 1);
+      }
+    });
+
+    // 감시대상을 지정
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, [isLoading, nextPage]);
+
   // 삭제신호를 울릴 수 있는 진동벨 함수를 내린다.
   const handleDelete = (id) => {
     // 지운다는 것은 -> 필터링한다는 것
@@ -89,31 +113,16 @@ const App = () => {
     setPosts([]);
   };
 
-  // 무한 스크롤 옵저버 처리
-  useEffect(() => { 
-
-    if (nextPage === null || isLoading) {
-      return;
-    }
-
-    const target = loaderRef.current;
-    if (target === null) {
-      return;
-    }
-
-    // 옵저버를 생성해서 감시를 맡김
-    const observer = new IntersectionObserver((entries) => { 
-      if (entries[0].isIntersecting) {
-        setPageNumber(current => current + 1);
-      }
-    });
-
-    // 감시대상을 지정
-    observer.observe(target);
-
-    return () => observer.disconnect();
-
-  }, [isLoading, nextPage]);
+  // 댓글 개수 처리를 위한 진동벨 함수 생성
+  const handleAddComment = (id) => {
+    setPosts((current) =>
+      current.map((post) =>
+        post.id === id
+          ? { ...post, commentCount: post.commentCount + 1 }
+          : post,
+      ),
+    );
+  };
 
   return (
     <main className={page.mainContent}>
@@ -127,6 +136,7 @@ const App = () => {
             posts={posts}
             isLoading={isLoading}
             onDelete={handleDelete}
+            onAddComment={handleAddComment}
             loaderRef={loaderRef}
           />
         </>

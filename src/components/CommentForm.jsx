@@ -3,12 +3,17 @@ import { useState } from 'react';
 import styles from './FeedItem.module.scss';
 
 
-const CommentForm = () => {
-
+const CommentForm = ({ onAddComment }) => {
   const [text, setText] = useState('');
 
-  const handleSubmit = event => { 
+  const handleSubmit = (event) => {
     event.preventDefault();
+
+    if (text.trim() === '') {
+      return;
+    }
+
+    onAddComment();
     setText('');
   };
 
@@ -21,13 +26,12 @@ const CommentForm = () => {
         placeholder='댓글 달기...'
         className={styles.commentInput}
         value={text}
-        onChange={(event) => {
-          setText(event.target.value);
-        }}
+        onChange={(event) => setText(event.target.value)}
       />
       <button
         type='submit'
-        className={styles.commentSubmit}>
+        className={styles.commentSubmit}
+        disabled={text.trim() === ''}>
         게시
       </button>
     </form>

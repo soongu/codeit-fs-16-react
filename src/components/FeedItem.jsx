@@ -18,10 +18,9 @@ const FeedItem = ({
   minutesAgo,
   likeCount,
   commentCount,
-  onDelete
+  onDelete,
+  onAddComment,
 }) => {
-
-
   return (
     <article className={styles.post}>
       <FeedItemHeader
@@ -51,7 +50,7 @@ const FeedItem = ({
 
       <CommentArea>
         <FeedItemComments commentCount={commentCount} />
-        <CommentForm />
+        <CommentForm onAddComment={onAddComment} />
       </CommentArea>
     </article>
   );
