@@ -1,5 +1,5 @@
 // ~/instagram-react/src/components/CreateFeedModal.jsx
-import { FaArrowLeft, FaImages, FaXmark } from 'react-icons/fa6';
+import { FaArrowLeft, FaImages, FaXmark, FaSpinner } from 'react-icons/fa6';
 import styles from './CreateFeedModal.module.scss';
 import { useState, useRef } from 'react';
 import carousel from './Carousel.module.scss';
@@ -13,9 +13,11 @@ const readAsDataUrl = (file) =>
     reader.readAsDataURL(file);
   });
 
-const CreateFeedModal = ({ onClose }) => {
+const CreateFeedModal = ({ onClose, onCreate }) => {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+
+  const [isSending, setIsSending] = useState(false);
 
   const fileInputRef = useRef(null);
 
@@ -40,24 +42,40 @@ const CreateFeedModal = ({ onClose }) => {
   // 공유하기 버튼을 눌렀을 때 이벤트 핸들러
   const handleShare = async () => {
 
-    const postImage = await readAsDataUrl(selectedFile);
+    setIsSending(true);
 
-    await fetch('http://localhost:3001/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: 'soongu',
-        profileImage: 'https://picsum.photos/seed/soongu/40/40',
-        postImage,
-        postAlt: '내가 올린 사진',
-        content: '하하호호 새로운 피드!!',
-        minutesAgo: 0,
-        likeCount: 0,
-        commentCount: 0,
-      }),
-    });
+    try {
+      const postImage = await readAsDataUrl(selectedFile);
+
+      const response = await fetch('http://localhost:3001/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: 'soongu',
+          profileImage: 'https://picsum.photos/seed/soongu/40/40',
+          postImage,
+          postAlt: '내가 올린 사진',
+          content: '하하호호 새로운 피드!!',
+          minutesAgo: 0,
+          likeCount: 0,
+          commentCount: 0,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`서버가${response.status}로 답했어요`);
+      }
+
+      const data = await response.json();
+
+      onCreate(data);
+      onClose();
+    } catch (error) {
+      console.error('게시물을 올리지 못했어요.', error);
+      setIsSending(false);
+    }
   };
 
   return (
@@ -87,11 +105,18 @@ const CreateFeedModal = ({ onClose }) => {
 
           {previewUrl && (
             <button
-              className={styles.nextButton}
+              className={`${styles.nextButton} ${isSending ? styles.loading : ''}`}
               onClick={handleShare}
+              disabled={isSending}
               type='button'>
               공유하기
             </button>
+          )}
+
+          {isSending && (
+            <div className={styles.loadingSpinner}>
+              <FaSpinner />
+            </div>
           )}
         </div>
 

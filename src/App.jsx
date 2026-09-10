@@ -127,6 +127,11 @@ const App = () => {
     );
   };
 
+  // 피드 생성 처리를 위한 진동벨 함수 생성
+  const handleCreate = (createdPost) => {
+    setPosts((current) => [createdPost, ...current]);
+  };
+
   return (
     <main className={page.mainContent}>
       <button
@@ -152,7 +157,10 @@ const App = () => {
       )}
 
       {isCreateOpen && (
-        <CreateFeedModal onClose={() => setIsCreateOpen(false)} />
+        <CreateFeedModal
+          onClose={() => setIsCreateOpen(false)}
+          onCreate={handleCreate}
+        />
       )}
     </main>
   );
