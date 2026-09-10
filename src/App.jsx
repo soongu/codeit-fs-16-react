@@ -103,7 +103,6 @@ const App = () => {
 
     // 옵저버를 생성해서 감시를 맡김
     const observer = new IntersectionObserver((entries) => { 
-      console.log(entries)
       if (entries[0].isIntersecting) {
         setPageNumber(current => current + 1);
       }
@@ -113,7 +112,7 @@ const App = () => {
     observer.observe(target);
 
     return () => observer.disconnect();
-    
+
   }, [isLoading, nextPage]);
 
   return (

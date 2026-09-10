@@ -1,15 +1,29 @@
-// ~/instagram-react/src/components/CommentForm.jsx
+// ~/instagram-rea ct/src/components/CommentForm.jsx
+import { useState } from 'react';
 import styles from './FeedItem.module.scss';
 
+
 const CommentForm = () => {
+
+  const [text, setText] = useState('');
+
+  const handleSubmit = event => { 
+    event.preventDefault();
+
+    setText('');
+  };
+
   return (
     <form
       className={styles.commentForm}
-      onSubmit={(event) => event.preventDefault()}>
+      onSubmit={handleSubmit}>
       <input
         type='text'
         placeholder='댓글 달기...'
         className={styles.commentInput}
+        onChange={(event) => {
+          setText(event.target.value);
+        }}
       />
       <button
         type='submit'
