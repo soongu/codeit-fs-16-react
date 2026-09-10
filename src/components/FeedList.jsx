@@ -26,9 +26,7 @@ const FeedSkeleton = () => (
 
 
 
-const FeedList = ({ posts, isLoading, onDelete }) => {
-
-
+const FeedList = ({ posts, isLoading, onDelete, loaderRef }) => {
   if (!isLoading && posts.length === 0) {
     return <p className={gridStyles.noPosts}>게시물이 없습니다.</p>;
   }
@@ -51,7 +49,10 @@ const FeedList = ({ posts, isLoading, onDelete }) => {
           />
         ))}
       </div>
-      <div className={styles.loader}>
+      <div
+        ref={loaderRef}
+        className={styles.loader}
+      >
         {isLoading && (
           <>
             <FeedSkeleton />

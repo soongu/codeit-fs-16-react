@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Stories from './components/Stories.jsx';
 import page from './components/FeedPage.module.scss';
 import stateStyles from './components/StatusMessage.module.scss';
@@ -7,15 +7,19 @@ import FeedList from './components/FeedList.jsx';
 const PER_PAGE = 2;
 
 const App = () => {
-
   // 데이터배열을 상태로 관리
   const [posts, setPosts] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(() => localStorage.getItem('lastUser'));
+  const [selectedUser, setSelectedUser] = useState(() =>
+    localStorage.getItem('lastUser'),
+  );
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const [pageNumber, setPageNumber] = useState(1);
   const [nextPage, setNextPage] = useState(null);
+
+  // loading tag를 저장하기 위한 ref
+  const loaderRef = useRef(null);
 
   useEffect(() => {
     if (selectedUser) {
@@ -24,21 +28,18 @@ const App = () => {
       localStorage.removeItem('lastUser');
     }
   }, [selectedUser]);
-  
-
 
   useEffect(() => {
     const controller = new AbortController();
     let cancelled = false;
 
     const loadPosts = async () => {
-
       const condition = `_page=${pageNumber}&_per_page=${PER_PAGE}`;
 
       const url = selectedUser
         ? `http://localhost:3001/posts?username=${selectedUser}&${condition}`
         : `http://localhost:3001/posts?${condition}`;
-      
+
       setIsLoading(true);
       setError(null);
 
@@ -52,14 +53,12 @@ const App = () => {
         const envelope = await res.json();
         setPosts((current) => [...current, ...envelope.data]);
         setNextPage(envelope.next);
-
       } catch (err) {
         if (err.name === 'AbortError') {
           return;
         }
         console.error('게시물 주소가 잘못되었습니다.', err);
         setError('게시물을 불러오지 못했습니다.');
-
       } finally {
         if (!cancelled) {
           setIsLoading(false);
@@ -106,6 +105,7 @@ const App = () => {
             posts={posts}
             isLoading={isLoading}
             onDelete={handleDelete}
+            loaderRef={loaderRef}
           />
           {nextPage && !isLoading && (
             <button
