@@ -3,6 +3,7 @@ import Stories from './components/Stories.jsx';
 import page from './components/FeedPage.module.scss';
 import stateStyles from './components/StatusMessage.module.scss';
 import FeedList from './components/FeedList.jsx';
+import CreateFeedModal from './components/CreateFeedModal.jsx';
 
 const PER_PAGE = 2;
 
@@ -17,6 +18,8 @@ const App = () => {
 
   const [pageNumber, setPageNumber] = useState(1);
   const [nextPage, setNextPage] = useState(null);
+
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
 
   // loading tag를 저장하기 위한 ref
   const loaderRef = useRef(null);
@@ -126,6 +129,12 @@ const App = () => {
 
   return (
     <main className={page.mainContent}>
+      <button
+        type='button'
+        onClick={() => setIsCreateOpen(true)}>
+        새 게시물
+      </button>
+
       <Stories onSelect={handleSelectUser} />
 
       {error ? (
@@ -140,6 +149,10 @@ const App = () => {
             loaderRef={loaderRef}
           />
         </>
+      )}
+
+      {isCreateOpen && (
+        <CreateFeedModal onClose={() => setIsCreateOpen(false)} />
       )}
     </main>
   );

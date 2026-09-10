@@ -1,0 +1,464 @@
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modalBackdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+
+  .modalCloseButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .modalContent {
+    position: relative;
+    background-color: white;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 855px;
+    height: 85vh;
+    max-height: 898px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Header */
+  .modalHeader {
+    position: relative;
+    height: 43px;
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  .modalTitle {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .backButton {
+    border: none;
+    background: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .nextButton {
+    border: none;
+    background: none;
+    color: #0095f6;
+    font-weight: 600;
+    padding: 8px;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    &.loading {
+      visibility: hidden;
+    }
+  }
+
+  .loadingSpinner {
+    position: absolute;
+    right: 16px;
+    color: #0095f6;
+  }
+
+  /* Body */
+  .modalBody {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .step {
+    display: none;
+    width: 100%;
+    height: 100%;
+
+    &.active {
+      display: flex;
+    }
+  }
+
+  /* Step 1: Upload */
+  .uploadContainer {
+    flex: 1;       /* flex 부모(.step)에서 전체 너비 차지 */
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+  }
+
+  .uploadArea {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed #dbdbdb;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    &.dragover {
+      border-color: #0095f6;
+      background-color: rgba(0, 149, 246, 0.05);
+    }
+
+    i {
+      font-size: 48px;
+      color: #262626;
+    }
+  }
+
+  .uploadButton {
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* Step 2 & Carousel */
+  .previewContainer {
+    flex: 1;
+    display: flex;          /* column으로 쌓기 */
+    flex-direction: column;
+    background-color: black;
+    overflow: hidden;
+
+    .previewArea {
+      flex: 1;              /* 캐러셀이 남은 공간을 차지 */
+      min-height: 0;        /* flex 자식이 축소될 수 있도록 */
+      width: 100%;
+      display: flex;
+    }
+  }
+
+  .carouselContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .carouselTrack {
+    display: flex;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .carouselSlide {
+    flex: 0 0 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .carouselPrev,
+  .carouselNext {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+    color: #262626;
+  }
+
+  .carouselPrev {
+    left: 16px;
+  }
+
+  .carouselNext {
+    right: 16px;
+  }
+
+  .carouselIndicators {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+  }
+
+  .indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+
+    &.active {
+      background-color: white;
+    }
+  }
+
+  /* Step 3: Write */
+  .writeContainer {
+    width: 100%;
+    height: 100%;
+  }
+
+  .writeLayout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+
+  .previewArea {
+    width: 65%;
+    background-color: black;
+    position: relative;
+  }
+
+  .writeArea {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #dbdbdb;
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px 0;
+  }
+
+  .profileImage {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .username {
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .contentInput {
+    position: relative;
+    padding: 10px 14px;
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      max-height: 180px;
+      border: none;
+      resize: none;
+      font-size: 14px;
+      line-height: 1.5;
+      outline: none;
+      padding: 0;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  .charCounter {
+    color: #737373;
+    font-size: 12px;
+    text-align: right;
+    padding: 0 4px;
+
+    &.exceed {
+      color: #ed4956;
+    }
+  }
+
+  .additionalOptions {
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    margin-top: 5%;
+  }
+
+  .optionItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    cursor: pointer;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  /* Nested Modal */
+  .nestedModal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+  }
+
+  .nestedModalTitle {
+    margin: 32px 32px 0;
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #737373;
+      margin-bottom: 24px;
+    }
+  }
+
+  .nestedModalContent {
+    background: white;
+    border-radius: 12px;
+    width: 400px;
+    text-align: center;
+  }
+
+  .nestedModalButtons {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border-top: 1px solid #dbdbdb;
+    }
+
+    .deleteButton {
+      color: #ed4956;
+      background: #fff;
+    }
+
+    .cancelButton {
+      background: none;
+      color: #262626;
+      font-weight: 400;
+    }
+  }
+
+  /* Hashtags Search Dropdown */
+  .hashtagSuggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+  .hashtagItem {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
+
+  .hashtagInfo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hashtagName {
+    font-size: 14px;
+    font-weight: 600;
+    color: #262626;
+  }
+
+  .postCount {
+    font-size: 12px;
+    color: #8e8e8e;
+  }
+}
