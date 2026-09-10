@@ -16,6 +16,7 @@ const CreateFeedModal = ({ onClose }) => {
     if (file) {
       setPreviewUrl(URL.createObjectURL(file));
     }
+    fileInputRef.current.value = '';
   };
 
   // 컴퓨터에서 선택 버튼 클릭 이벤트 핸들러
@@ -47,6 +48,7 @@ const CreateFeedModal = ({ onClose }) => {
           <div className={`${styles.step}${styles.active}`}>
             <div className={styles.uploadContainer}>
               <input
+                id='fileInput'
                 ref={fileInputRef}
                 type='file'
                 accept='image/jpeg,image/png,image/gif,image/webp,image/avif'
@@ -55,16 +57,24 @@ const CreateFeedModal = ({ onClose }) => {
               />
 
               {previewUrl ? (
-                <div className={styles.previewContainer}>
-                  <div className={styles.previewArea}>
-                    <div className={carousel.carouselSlide}>
-                      <img
-                        src={previewUrl}
-                        alt='고른 사진 미리보기'
-                      />
+                <>
+                  <div className={styles.previewContainer}>
+                    <div className={styles.previewArea}>
+                      <div className={carousel.carouselSlide}>
+                        <img
+                          src={previewUrl}
+                          alt='고른 사진 미리보기'
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
+                  <button
+                    className={styles.uploadButton}
+                    onClick={handlePick}
+                    type='button'>
+                    다른 사진 고르기
+                  </button>
+                </>
               ) : (
                 <div className={styles.uploadArea}>
                   <FaImages
