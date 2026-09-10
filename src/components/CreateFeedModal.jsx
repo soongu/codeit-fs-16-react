@@ -1,13 +1,27 @@
 // ~/instagram-react/src/components/CreateFeedModal.jsx
 import { FaImages, FaXmark } from 'react-icons/fa6';
 import styles from './CreateFeedModal.module.scss';
+import { useState, useRef } from 'react';
+import carousel from './Carousel.module.scss';
 
 const CreateFeedModal = ({ onClose }) => {
-  
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const fileInputRef = useRef(null);
+
   // 파일 업로드 이벤트 핸들러
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    console.log(file.name, file.size, file.type);
+
+    if (file) {
+      setPreviewUrl(URL.createObjectURL(file));
+    }
+  };
+
+  // 컴퓨터에서 선택 버튼 클릭 이벤트 핸들러
+  const handlePick = () => { 
+    // input.file을 대리로 클릭하게 만듬
+    fileInputRef.current.click();
   };
 
   return (
@@ -32,17 +46,41 @@ const CreateFeedModal = ({ onClose }) => {
         <div className={styles.modalBody}>
           <div className={`${styles.step}${styles.active}`}>
             <div className={styles.uploadContainer}>
-              <div className={styles.uploadArea}>
-                <FaImages
-                  size={48}
-                  color='#262626'
-                />
-                <p>사진과 동영상을 여기에 끌어다 놓으세요</p>
-                <input
-                  type='file'
-                  onChange={handleFileChange}
-                />
-              </div>
+              <input
+                ref={fileInputRef}
+                type='file'
+                accept='image/jpeg,image/png,image/gif,image/webp,image/avif'
+                style={{ display: 'none' }}
+                onChange={handleFileChange}
+              />
+
+              {previewUrl ? (
+                <div className={styles.previewContainer}>
+                  <div className={styles.previewArea}>
+                    <div className={carousel.carouselSlide}>
+                      <img
+                        src={previewUrl}
+                        alt='고른 사진 미리보기'
+                      />
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className={styles.uploadArea}>
+                  <FaImages
+                    size={48}
+                    color='#262626'
+                  />
+                  <p>사진과 동영상을 여기에 끌어다 놓으세요</p>
+
+                  <button
+                    className={styles.uploadButton}
+                    onClick={handlePick}
+                    type='button'>
+                    컴퓨터에서 선택
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
