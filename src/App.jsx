@@ -4,7 +4,7 @@ import page from './components/FeedPage.module.scss';
 import stateStyles from './components/StatusMessage.module.scss';
 import FeedList from './components/FeedList.jsx';
 import CreateFeedModal from './components/CreateFeedModal.jsx';
-import api from './services/api.js';
+import { postApi } from './services/api.js';
 import axios from 'axios';
 
 const PER_PAGE = 2;
@@ -41,15 +41,15 @@ const App = () => {
     const loadPosts = async () => {
       const condition = `_page=${pageNumber}&_per_page=${PER_PAGE}`;
 
-      const url = selectedUser
-        ? `/posts?username=${selectedUser}&${condition}`
-        : `/posts?${condition}`;
+      const query = selectedUser
+        ? `username=${selectedUser}&${condition}`
+        : condition;
 
       setIsLoading(true);
       setError(null);
 
       try {
-        const envelope = await api.get(url, {
+        const envelope = await postApi.getPage(query, {
           signal: controller.signal,
         });
         
@@ -108,7 +108,7 @@ const App = () => {
     setPosts(posts.filter((post) => post.id !== id));
 
     try {
-      await api.delete(`/posts/${id}`);
+      await postApi.remove(id);
     } catch (err) {
       console.error('게시물을 지우지 못했어요.', err);
       setPosts(previous);

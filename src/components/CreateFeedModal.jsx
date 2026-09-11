@@ -3,7 +3,7 @@ import { FaArrowLeft, FaImages, FaXmark, FaSpinner } from 'react-icons/fa6';
 import styles from './CreateFeedModal.module.scss';
 import { useState, useRef } from 'react';
 import carousel from './Carousel.module.scss';
-import api from '../services/api';
+import { postApi } from '../services/api';
 
 // 이미지를 문자열로 변환하는 헬퍼함수
 const readAsDataUrl = (file) =>
@@ -47,7 +47,7 @@ const CreateFeedModal = ({ onClose, onCreate }) => {
     try {
       const postImage = await readAsDataUrl(selectedFile);
 
-      const response = await api.post('/posts', {
+      const response = await postApi.create({
         username: 'soongu',
         profileImage: 'https://picsum.photos/seed/soongu/40/40',
         postImage,
@@ -58,7 +58,7 @@ const CreateFeedModal = ({ onClose, onCreate }) => {
         commentCount: 0,
       });
 
-      onCreate(response.data);
+      onCreate(response);
       onClose();
     } catch (error) {
       console.error('게시물을 올리지 못했어요.', error);
