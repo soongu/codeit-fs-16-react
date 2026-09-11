@@ -3,6 +3,7 @@ import { FaArrowLeft, FaImages, FaXmark, FaSpinner } from 'react-icons/fa6';
 import styles from './CreateFeedModal.module.scss';
 import { useState, useRef } from 'react';
 import carousel from './Carousel.module.scss';
+import api from '../services/api';
 
 // 이미지를 문자열로 변환하는 헬퍼함수
 const readAsDataUrl = (file) =>
@@ -41,36 +42,23 @@ const CreateFeedModal = ({ onClose, onCreate }) => {
 
   // 공유하기 버튼을 눌렀을 때 이벤트 핸들러
   const handleShare = async () => {
-
     setIsSending(true);
 
     try {
       const postImage = await readAsDataUrl(selectedFile);
 
-      const response = await fetch('http://localhost:3001/posts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: 'soongu',
-          profileImage: 'https://picsum.photos/seed/soongu/40/40',
-          postImage,
-          postAlt: '내가 올린 사진',
-          content: '하하호호 새로운 피드!!',
-          minutesAgo: 0,
-          likeCount: 0,
-          commentCount: 0,
-        }),
+      const response = await api.post('/posts', {
+        username: 'soongu',
+        profileImage: 'https://picsum.photos/seed/soongu/40/40',
+        postImage,
+        postAlt: '내가 올린 사진',
+        content: '하하호호 새로운 피드!!',
+        minutesAgo: 0,
+        likeCount: 0,
+        commentCount: 0,
       });
 
-      if (!response.ok) {
-        throw new Error(`서버가${response.status}로 답했어요`);
-      }
-
-      const data = await response.json();
-
-      onCreate(data);
+      onCreate(response.data);
       onClose();
     } catch (error) {
       console.error('게시물을 올리지 못했어요.', error);

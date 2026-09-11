@@ -4,6 +4,7 @@ import page from './components/FeedPage.module.scss';
 import stateStyles from './components/StatusMessage.module.scss';
 import FeedList from './components/FeedList.jsx';
 import CreateFeedModal from './components/CreateFeedModal.jsx';
+import api from './services/api.js';
 
 const PER_PAGE = 2;
 
@@ -40,20 +41,18 @@ const App = () => {
       const condition = `_page=${pageNumber}&_per_page=${PER_PAGE}`;
 
       const url = selectedUser
-        ? `http://localhost:3001/posts?username=${selectedUser}&${condition}`
-        : `http://localhost:3001/posts?${condition}`;
+        ? `/posts?username=${selectedUser}&${condition}`
+        : `/posts?${condition}`;
 
       setIsLoading(true);
       setError(null);
 
       try {
-        const res = await fetch(url, {
+        const res = await api.get(url, {
           signal: controller.signal,
         });
-        if (!res.ok) {
-          throw new Error(`서버가${res.status}로 답했어요`);
-        }
-        const envelope = await res.json();
+        
+        const envelope = res.data;
         setPosts((current) => [...current, ...envelope.data]);
         setNextPage(envelope.next);
       } catch (err) {
@@ -109,12 +108,7 @@ const App = () => {
     setPosts(posts.filter((post) => post.id !== id));
 
     try {
-      const response = await fetch(`http://localhost:3001/posts/${id}`, {
-        method: 'DELETE',
-      });
-      if (!response.ok) {
-        throw new Error(`서버가${response.status}로 답했어요`);
-      }
+      await api.delete(`/posts/${id}`);
     } catch (err) {
       console.error('게시물을 지우지 못했어요.', err);
       setPosts(previous);

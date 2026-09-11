@@ -9,6 +9,8 @@ import {
   FaRegPaperPlane,
 } from 'react-icons/fa6';
 
+import api from "../services/api";
+
 
 const FeedItemActions = ({ postId, likeCount }) => {
   const [like, setLike] = useState({
@@ -26,14 +28,7 @@ const FeedItemActions = ({ postId, likeCount }) => {
     setLike(next);
 
     try {
-      const response = await fetch(`http://localhost:3001/posts/${postId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ likeCount: next.count }),
-      });
-      if (!response.ok) {
-        throw new Error(`서버가${response.status}로 답했어요`);
-      }
+      await api.patch(`/posts/${postId}`, { likeCount: next.count });
     } catch (err) {
       console.error('좋아요를 저장하지 못했어요.', err);
       setLike(previous);
