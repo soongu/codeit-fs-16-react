@@ -10,6 +10,7 @@ import styles from './FeedItem.module.scss';
 import carousel from './Carousel.module.scss';
 
 const FeedItem = ({
+  postId,
   username,
   profileImage,
   postImage,
@@ -38,7 +39,10 @@ const FeedItem = ({
         </div>
       </div>
 
-      <FeedItemActions likeCount={likeCount} />
+      <FeedItemActions
+        postId={postId}
+        likeCount={likeCount}
+      />
 
       <div className={styles.content}>
         <FeedItemContent

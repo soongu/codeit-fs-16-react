@@ -1,5 +1,6 @@
 // ~/instagram-react/src/components/Stories.jsx
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './Stories.module.scss';
 import StoryItem from './StoryItem.jsx';
 
@@ -12,12 +13,8 @@ const Stories = ({ onSelect }) => {
     
     (async () => {
       try {
-        const response = await fetch('http://localhost:3001/stories');
-        if (!response.ok) {
-          throw new Error(`서버가${response.status}로 답했어요`);
-        }
-        const data = await response.json();
-        setStories(data);
+        const response = await axios.get('http://localhost:3001/stories');
+        setStories(response.data);
       } catch (error) {
         console.error('스토리를 가져오지 못했어요.', error);
       }

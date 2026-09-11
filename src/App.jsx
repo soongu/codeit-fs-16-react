@@ -102,9 +102,23 @@ const App = () => {
   }, [isLoading, nextPage]);
 
   // 삭제신호를 울릴 수 있는 진동벨 함수를 내린다.
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
+    // 백업
+    const previous = posts;
     // 지운다는 것은 -> 필터링한다는 것
     setPosts(posts.filter((post) => post.id !== id));
+
+    try {
+      const response = await fetch(`http://localhost:3001/posts/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error(`서버가${response.status}로 답했어요`);
+      }
+    } catch (err) {
+      console.error('게시물을 지우지 못했어요.', err);
+      setPosts(previous);
+    }
   };
 
   const handleSelectUser = (username) => {

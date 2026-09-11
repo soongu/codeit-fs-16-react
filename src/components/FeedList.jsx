@@ -37,6 +37,7 @@ const FeedList = ({ posts, isLoading, onDelete, onAddComment, loaderRef }) => {
         {posts.map((post) => (
           <FeedItem
             key={post.id}
+            postId={post.id}
             username={post.username}
             profileImage={post.profileImage}
             postImage={post.postImage}
