@@ -13,8 +13,8 @@ const Stories = ({ onSelect }) => {
     
     (async () => {
       try {
-        const response = await api.get('/stories');
-        setStories(response.data);
+        const found = await api.get('/stories');
+        setStories(found);
       } catch (error) {
         console.error('스토리를 가져오지 못했어요.', error);
       }

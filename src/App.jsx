@@ -5,6 +5,7 @@ import stateStyles from './components/StatusMessage.module.scss';
 import FeedList from './components/FeedList.jsx';
 import CreateFeedModal from './components/CreateFeedModal.jsx';
 import api from './services/api.js';
+import axios from 'axios';
 
 const PER_PAGE = 2;
 
@@ -48,15 +49,14 @@ const App = () => {
       setError(null);
 
       try {
-        const res = await api.get(url, {
+        const envelope = await api.get(url, {
           signal: controller.signal,
         });
         
-        const envelope = res.data;
         setPosts((current) => [...current, ...envelope.data]);
         setNextPage(envelope.next);
       } catch (err) {
-        if (err.name === 'AbortError') {
+        if (axios.isCancel(err)) {
           return;
         }
         console.error('게시물 주소가 잘못되었습니다.', err);
