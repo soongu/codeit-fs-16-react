@@ -5,6 +5,7 @@ import stateStyles from './components/StatusMessage.module.scss';
 import FeedList from './components/FeedList.jsx';
 import CreateFeedModal from './components/CreateFeedModal.jsx';
 import { usePosts } from './hooks/usePosts.js';
+import UserSearch from './components/UserSearch.jsx';
 
 const App = () => {
   
@@ -28,6 +29,8 @@ const App = () => {
         onClick={() => setIsCreateOpen(true)}>
         새 게시물
       </button>
+
+      <UserSearch onSearch={selectUser} />
 
       <Stories onSelect={selectUser} />
 

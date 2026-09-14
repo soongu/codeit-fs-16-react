@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { postApi } from '../services/api';
 import axios from 'axios';
 
@@ -108,14 +108,11 @@ export const usePosts = () => {
     }
   };
 
-  const selectUser = (username) => {
-    // console.log('스토리쪽으로 진동벨 전달~', username);
-    // console.log('현재 선택된 유저: ', selectedUser);
-    // console.log('지금 막 선택한 유저: ', username);
+  const selectUser = useCallback((username) => {
     setSelectedUser((current) => (current === username ? null : username));
     setPageNumber(1);
     setPosts([]);
-  };
+  }, []);
 
   // 댓글 개수 처리를 위한 진동벨 함수 생성
   const countUpComment = (id) => {
