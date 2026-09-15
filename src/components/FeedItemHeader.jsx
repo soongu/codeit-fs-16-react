@@ -1,8 +1,7 @@
 // ~/instagram-react/src/components/FeedItemHeader.jsx'
-import { useContext } from 'react';
 import styles from './FeedItem.module.scss';
 import { FaEllipsis } from 'react-icons/fa6';
-import { PostsContext } from '../contexts/PostsContext';
+import { usePostsContext } from '../contexts/PostsContext';
 
 const FeedItemHeader = ({
   postId,
@@ -10,7 +9,7 @@ const FeedItemHeader = ({
   profileImage = 'https://picsum.photos/seed/default/40/40'
 }) => {
 
-  const { removePost } = useContext(PostsContext);
+  const { removePost } = usePostsContext();
 
   return (
     <header className={styles.header}>

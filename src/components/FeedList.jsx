@@ -2,8 +2,7 @@
 import styles from './FeedList.module.scss';
 import gridStyles from './PostGrid.module.scss';
 import FeedItem from './FeedItem.jsx';
-import { useContext } from 'react';
-import { PostsContext } from '../contexts/PostsContext.jsx';
+import { usePostsContext } from '../contexts/PostsContext.jsx';
 
 
 const FeedSkeleton = () => (
@@ -29,7 +28,8 @@ const FeedSkeleton = () => (
 
 const FeedList = () => {
 
-  const { posts, isLoading, loaderRef } = useContext(PostsContext);
+
+  const { posts, isLoading, loaderRef } = usePostsContext();
 
   if (!isLoading && posts.length === 0) {
     return <p className={gridStyles.noPosts}>게시물이 없습니다.</p>;

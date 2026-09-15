@@ -1,11 +1,11 @@
 // ~/instagram-rea ct/src/components/CommentForm.jsx
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import styles from './FeedItem.module.scss';
-import { PostsContext } from '../contexts/PostsContext';
+import { usePostsContext } from '../contexts/PostsContext';
 
 
 const CommentForm = ({ postId }) => {
-  const { countUpComment } = useContext(PostsContext);
+  const { countUpComment } = usePostsContext();
 
   const [text, setText] = useState('');
 
