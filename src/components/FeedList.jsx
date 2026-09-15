@@ -27,7 +27,7 @@ const FeedSkeleton = () => (
 
 
 
-const FeedList = ({ onDelete, onAddComment }) => {
+const FeedList = () => {
 
   const { posts, isLoading, loaderRef } = useContext(PostsContext);
 
@@ -50,8 +50,6 @@ const FeedList = ({ onDelete, onAddComment }) => {
             minutesAgo={post.minutesAgo}
             likeCount={post.likeCount}
             commentCount={post.commentCount}
-            onDelete={() => onDelete(post.id)}
-            onAddComment={() => onAddComment(post.id)}
           />
         ))}
       </div>

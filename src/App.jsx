@@ -17,13 +17,8 @@ const App = () => {
   const postsStore = usePosts();
 
   const {
-    posts,
-    isLoading,
     error,
-    loaderRef,
     addPost,
-    removePost,
-    countUpComment,
     selectUser,
   } = postsStore;
   
@@ -44,10 +39,7 @@ const App = () => {
           <p className={stateStyles.errorText}>{error}</p>
         ) : (
           <>
-            <FeedList
-              onDelete={removePost}
-              onAddComment={countUpComment}
-            />
+            <FeedList />
           </>
         )}
 
