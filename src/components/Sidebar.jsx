@@ -1,10 +1,12 @@
 // ~/instagram-react/src/components/Sidebar.jsx
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { FaHouse } from 'react-icons/fa6';
 import InstagramLogo from './InstagramLogo.jsx';
 import styles from './Sidebar.module.scss';
 
 function Sidebar() {
+
+
   return (
     <nav className={styles.sidebar}>
       <div className={styles.logoContainer}>
@@ -16,14 +18,14 @@ function Sidebar() {
       </div>
 
       <div className={styles.menuContainer}>
-        <Link
+        <NavLink
           to='/'
           className={styles.menuItem}>
           <FaHouse size={24} />
           <span className={styles.menuText}>홈</span>
-        </Link>
+        </NavLink>
 
-        <Link
+        <NavLink
           to='/jaehoon'
           className={styles.menuItem}>
           <div className={styles.profileImage}>
@@ -33,7 +35,7 @@ function Sidebar() {
             />
           </div>
           <span className={styles.menuText}>프로필</span>
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );

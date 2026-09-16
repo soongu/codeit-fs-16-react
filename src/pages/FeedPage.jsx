@@ -13,22 +13,28 @@ const FeedPage = () => {
   const { error, addPost, selectUser } = usePostsContext();
 
   return (
-    <main className={page.mainContent}>
-      <button
-        type='button'
-        onClick={() => setIsCreateOpen(true)}>
-        새 게시물
-      </button>
-      <UserSearch onSearch={selectUser} />
-      <Stories onSelect={selectUser} />
-      {error ? <p className={stateStyles.errorText}>{error}</p> : <FeedList />}
-      {isCreateOpen && (
-        <CreateFeedModal
-          onClose={() => setIsCreateOpen(false)}
-          onCreate={addPost}
-        />
-      )}
-    </main>
+    <>
+      <main className={page.mainContent}>
+        <button
+          type='button'
+          onClick={() => setIsCreateOpen(true)}>
+          새 게시물
+        </button>
+        <UserSearch onSearch={selectUser} />
+        <Stories onSelect={selectUser} />
+        {error ? (
+          <p className={stateStyles.errorText}>{error}</p>
+        ) : (
+          <FeedList />
+        )}
+        {isCreateOpen && (
+          <CreateFeedModal
+            onClose={() => setIsCreateOpen(false)}
+            onCreate={addPost}
+          />
+        )}
+      </main>
+    </>
   );
 }
 
