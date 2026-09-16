@@ -20,8 +20,6 @@ export const usePosts = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [nextPage, setNextPage] = useState(null);
 
-  // loading tag를 저장하기 위한 ref
-  const loaderRef = useRef(null);
 
   useEffect(() => {
     setPageNumber(1);
@@ -70,29 +68,6 @@ export const usePosts = () => {
     };
   }, [selectedUser, pageNumber]);
 
-  // 무한 스크롤 옵저버 처리
-  useEffect(() => {
-    if (nextPage === null || isLoading) {
-      return;
-    }
-
-    const target = loaderRef.current;
-    if (target === null) {
-      return;
-    }
-
-    // 옵저버를 생성해서 감시를 맡김
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setPageNumber((current) => current + 1);
-      }
-    });
-
-    // 감시대상을 지정
-    observer.observe(target);
-
-    return () => observer.disconnect();
-  }, [isLoading, nextPage]);
 
   // 삭제신호를 울릴 수 있는 진동벨 함수를 내린다.
   const removePost = async (id) => {
@@ -141,11 +116,16 @@ export const usePosts = () => {
     setPosts((current) => [createdPost, ...current]);
   };
 
+  const loadMore = useCallback(() => {
+    setPageNumber((current) => current + 1);
+  }, []);
+
   return {
     posts,
     isLoading,
     error,
-    loaderRef,
+    hasNext: nextPage !== null,
+    loadMore,
     addPost,
     removePost,
     countUpComment,
