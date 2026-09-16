@@ -33,6 +33,7 @@ function ProfilePage() {
     loadProfile();
   }, [username]);
 
+
   if (isLoading) {
     return <p className={stateStyles.loadingText}>불러오는 중이에요…</p>;
   }

@@ -31,6 +31,7 @@ function Sidebar() {
       <div className={styles.menuContainer}>
         <NavLink
           to='/'
+          end
           className={styles.menuItem}>
           <FaHouse size={24} />
           <span className={styles.menuText}>홈</span>
