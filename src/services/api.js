@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const POSTS = '/posts';
 const STORIES = '/stories';
+const PROFILES = '/profiles';
 
 const api = axios.create({
   baseURL: 'http://localhost:3001',
@@ -20,6 +21,10 @@ export const postApi = {
 
 export const storyApi = {
   getAll: () => api.get(STORIES),
+};
+
+export const profileApi = {
+  getProfile: (username) => api.get(`${PROFILES}?username=${username}`)
 };
 
 
