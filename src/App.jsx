@@ -5,8 +5,16 @@ import ProfilePage from './pages/ProfilePage.jsx';
 const App = () => { 
   return (
     <Routes>
-      <Route path="/" element={<FeedPage />} />
-      <Route path="/jaehoon" element={<ProfilePage />} />
+      <Route
+        path='/'
+        element={
+            <FeedPage />
+        }
+      />
+      <Route
+        path='/jaehoon'
+        element={<ProfilePage />}
+      />
     </Routes>
   );
 };
