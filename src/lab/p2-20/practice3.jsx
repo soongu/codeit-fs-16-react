@@ -25,9 +25,15 @@ const ParentLayout = () => {
 const Practice3 = () => {
   return (
     <Routes>
-      <Route path="/가게" element={<ParentLayout/>}>
-        <Route index element={<h2>가게에 온 것을 환영해요</h2>} />
-        <Route path="신상" element={<h2>새로 들어온 것이에요</h2>} />
+      <Route path="/가게" element={<ParentLayout />}>
+        <Route
+          index
+          element={<h2>가게에 온 것을 환영해요</h2>}
+        />
+        <Route
+          path='신상'
+          element={<h2>새로 들어온 것이에요</h2>}
+        />
       </Route>
     </Routes>
   );

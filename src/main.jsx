@@ -4,14 +4,12 @@ import './styles/global.scss';
 import App from './App.jsx';
 import { PostsProvider } from './contexts/PostsContext.jsx';
 import { BrowserRouter } from 'react-router';
-import Practice3 from './lab/p2-20/practice3.jsx';
 
 createRoot(document.querySelector('#root')).render(
   <StrictMode>
     <BrowserRouter>
       <PostsProvider>
-        {/* <App /> */}
-        <Practice3 />
+        <App />
       </PostsProvider>
     </BrowserRouter>
   </StrictMode>,
