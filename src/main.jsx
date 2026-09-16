@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client';
 import './styles/global.scss';
 import App from './App.jsx';
 import { PostsProvider } from './contexts/PostsContext.jsx';
+import { BrowserRouter } from 'react-router';
 
 createRoot(document.querySelector('#root')).render(
   <StrictMode>
-    <PostsProvider>
-      <App />
-    </PostsProvider>
+    <BrowserRouter>
+      <PostsProvider>
+        <App />
+      </PostsProvider>
+    </BrowserRouter>
   </StrictMode>,
 );

@@ -7,11 +7,11 @@ import CreateFeedModal from './components/CreateFeedModal.jsx';
 import UserSearch from './components/UserSearch.jsx';
 
 import { usePostsContext } from './contexts/PostsContext.jsx';
+import { Route, Routes } from 'react-router';
 
-const App = () => {
+const FeedScreen = () => {
   
   const [isCreateOpen, setIsCreateOpen] = useState(false);
-
   const { error, addPost, selectUser } = usePostsContext();
 
   return (
@@ -43,5 +43,17 @@ const App = () => {
     </main>
   );
 };
+
+
+const App = () => { 
+  return (
+    <Routes>
+      <Route path="/" element={<FeedScreen />} />
+      <Route path="/home" element={<h2>홈 입니다.</h2>} />
+      <Route path="/login" element={<h2>로그인 입니다.</h2>} />
+    </Routes>
+  );
+};
+
 
 export default App;
