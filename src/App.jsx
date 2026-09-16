@@ -14,11 +14,7 @@ const App = () => {
           element={<FeedPage />}
         />
         <Route
-          path='/jaehoon'
-          element={<ProfilePage />}
-        />
-        <Route
-          path='/login'
+          path='/:username'
           element={<ProfilePage />}
         />
       </Routes>
