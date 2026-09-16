@@ -1,0 +1,290 @@
+// src/components/common/SearchPanel/SearchPanel.module.scss
+
+.searchPanel {
+  position: fixed;
+  top: 0;
+  left: 72px;
+  width: 397px;
+  height: 100vh;
+  background-color: #fff;
+  border-right: 1px solid #dbdbdb;
+  border-radius: 0 16px 16px 0;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  z-index: 99;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+// Header
+.header {
+  padding: 12px 24px 20px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 12px 0;
+  }
+}
+
+// Search Input
+.searchInputContainer {
+  position: relative;
+  padding: 0 16px 16px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 36px 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #efefef;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  height: 40px;
+  box-sizing: border-box;
+
+  &::placeholder {
+    color: #8e8e8e;
+  }
+}
+
+.clearButton {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-70%);
+  width: 20px;
+  height: 20px;
+  border: none;
+  background: #c7c7c7;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 10px;
+  padding: 0;
+
+  &:hover {
+    background: #a8a8a8;
+  }
+}
+
+// Divider
+.divider {
+  border: none;
+  height: 1px;
+  background-color: #dbdbdb;
+  margin: 0;
+}
+
+// Content Area
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px 0;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c7c7c7;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+// Recent Header
+.recentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 24px 8px;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.clearAllButton {
+  border: none;
+  background: none;
+  color: #0095f6;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px;
+  font-family: inherit;
+
+  &:hover {
+    color: #00376b;
+  }
+}
+
+// Result Item
+.resultItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 24px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+}
+
+.resultAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.resultInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.resultUsername {
+  font-size: 14px;
+  font-weight: 600;
+  color: #262626;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.resultName {
+  font-size: 14px;
+  color: #8e8e8e;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.removeButton {
+  border: none;
+  background: none;
+  color: #c7c7c7;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  &:hover {
+    color: #262626;
+  }
+}
+
+// Empty state
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #8e8e8e;
+  font-size: 14px;
+}
+
+// Skeleton
+@keyframes shimmer {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.skeletonItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 24px;
+}
+
+.skeletonAvatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #efefef;
+  flex-shrink: 0;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonText {
+  height: 14px;
+  border-radius: 4px;
+  background: #efefef;
+  animation: shimmer 1.5s infinite linear;
+}
+
+.skeletonUsername {
+  composes: skeletonText;
+  width: 120px;
+  margin-bottom: 6px;
+}
+
+.skeletonName {
+  composes: skeletonText;
+  width: 160px;
+}
+
+// Infinite scroll sentinel
+.sentinel {
+  height: 1px;
+}
+
+// Loading more spinner
+.loadingMore {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #dbdbdb;
+  border-top-color: #8e8e8e;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+// Backdrop
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 98;
+}

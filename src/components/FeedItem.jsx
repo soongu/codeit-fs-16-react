@@ -10,6 +10,7 @@ import styles from './FeedItem.module.scss';
 import carousel from './Carousel.module.scss';
 
 const FeedItem = ({
+  postId,
   username,
   profileImage,
   postImage,
@@ -19,10 +20,10 @@ const FeedItem = ({
   likeCount,
   commentCount,
 }) => {
-
   return (
     <article className={styles.post}>
       <FeedItemHeader
+        postId={postId}
         username={username}
         profileImage={profileImage}
       />
@@ -36,7 +37,10 @@ const FeedItem = ({
         </div>
       </div>
 
-      <FeedItemActions likeCount={likeCount} />
+      <FeedItemActions
+        postId={postId}
+        likeCount={likeCount}
+      />
 
       <div className={styles.content}>
         <FeedItemContent
@@ -48,7 +52,7 @@ const FeedItem = ({
 
       <CommentArea>
         <FeedItemComments commentCount={commentCount} />
-        <CommentForm />
+        <CommentForm postId={postId} />
       </CommentArea>
     </article>
   );

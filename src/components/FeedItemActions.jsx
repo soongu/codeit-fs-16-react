@@ -9,21 +9,30 @@ import {
   FaRegPaperPlane,
 } from 'react-icons/fa6';
 
+import { postApi } from "../services/api";
 
-const FeedItemActions = ({ likeCount }) => {
 
+const FeedItemActions = ({ postId, likeCount }) => {
   const [like, setLike] = useState({
     liked: false,
-    count: likeCount
+    count: likeCount,
   });
 
   // 좋아요 버튼에 붙은 이벤트 핸들러
-  const handleLike = () => {
-    setLike({
-      ...like,
+  const handleLike = async () => {
+    const previous = like;
+    const next = {
       liked: !like.liked,
-      count: like.liked ? like.count - 1 : like.count + 1
-    });
+      count: like.liked ? like.count - 1 : like.count + 1,
+    };
+    setLike(next);
+
+    try {
+      await postApi.updateLikeCount(postId, next.count);
+    } catch (err) {
+      console.error('좋아요를 저장하지 못했어요.', err);
+      setLike(previous);
+    }
   };
 
   return (
