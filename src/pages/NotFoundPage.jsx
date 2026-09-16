@@ -5,11 +5,12 @@ import styles from '../components/StatusMessage.module.scss';
 function NotFoundPage() {
 
   const location = useLocation();
-  console.log(location);
 
   return (
     <main className={styles.hashtagMain}>
-      <p className={styles.emptyHint}>이런 주소는 없어요.</p>
+      <p className={styles.emptyHint}>
+        이런 주소는 없어요 — {decodeURIComponent(location.pathname)}
+      </p>
     </main>
   );
 }

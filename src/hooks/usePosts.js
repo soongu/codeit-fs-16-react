@@ -1,15 +1,19 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { postApi } from '../services/api';
 import axios from 'axios';
+import { useSearchParams } from 'react-router';
 
 const PER_PAGE = 2;
 
 export const usePosts = () => {
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
   // 데이터배열을 상태로 관리
   const [posts, setPosts] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(() =>
-    localStorage.getItem('lastUser'),
-  );
+  
+  const selectedUser = searchParams.get('user');
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -20,11 +24,8 @@ export const usePosts = () => {
   const loaderRef = useRef(null);
 
   useEffect(() => {
-    if (selectedUser) {
-      localStorage.setItem('lastUser', selectedUser);
-    } else {
-      localStorage.removeItem('lastUser');
-    }
+    setPageNumber(1);
+    setPosts([]);
   }, [selectedUser]);
 
   useEffect(() => {
@@ -109,10 +110,20 @@ export const usePosts = () => {
   };
 
   const selectUser = useCallback((username) => {
-    setSelectedUser((current) => (current === username ? null : username));
-    setPageNumber(1);
-    setPosts([]);
-  }, []);
+    // 주소창에 ?user=xxx 를 달아주기만 하면됨
+    setSearchParams((current) => { 
+      // current는 기존에 user파라미터의 값
+      const next = new URLSearchParams(current);
+
+      // 이번에 새로 누른 user파라미터 == username
+      if (next.get('user') === username) {
+        next.delete('user');
+      } else {
+        next.set('user', username);
+      }
+      return next;
+    });
+  }, [setSearchParams]);
 
   // 댓글 개수 처리를 위한 진동벨 함수 생성
   const countUpComment = (id) => {

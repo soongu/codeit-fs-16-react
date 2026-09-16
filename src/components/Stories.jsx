@@ -5,7 +5,7 @@ import styles from './Stories.module.scss';
 import StoryItem from './StoryItem.jsx';
 
 
-const Stories = ({ onSelect }) => {
+const Stories = () => {
 
   const [stories, setStories] = useState([]);
 
@@ -32,7 +32,6 @@ const Stories = ({ onSelect }) => {
             username={story.username}
             profileImage={`https://picsum.photos/seed/${story.username}/50/50`}
             unseen={story.unseen}
-            onSelect={() => onSelect(story.username)}
           />
         ))}
       </div>

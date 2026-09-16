@@ -14,7 +14,7 @@ const FeedPage = () => {
     <>
       <main className={page.mainContent}>
         <UserSearch onSearch={selectUser} />
-        <Stories onSelect={selectUser} />
+        <Stories />
         {error ? (
           <p className={stateStyles.errorText}>{error}</p>
         ) : (
