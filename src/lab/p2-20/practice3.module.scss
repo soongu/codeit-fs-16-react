@@ -1,0 +1,12 @@
+.store {
+  color: #666;
+  font-size: 3rem;
+  text-decoration: underline;
+  margin-bottom: 2rem;
+  display: block;
+
+  &:global(.active) {
+    font-weight: 700;
+    background: orangered;
+  }
+}
